@@ -16,7 +16,7 @@ class ControlPanel {
       return;
     }
 
-    _settings.removeWhere((s) => s.settingId == settingID);
+    _settings.removeWhere((s) => s.setting.id == settingID);
   }
 
   static void initialize({

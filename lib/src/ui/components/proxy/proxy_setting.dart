@@ -52,7 +52,7 @@ class ProxySetting extends StatefulWidget implements ControlPanelSetting {
   final ProxySettingProps props;
 
   @override
-  String get settingId => runtimeType.toString();
+  Setting get setting => Setting(id: runtimeType.toString());
 
   const ProxySetting(this.props, {Key key}) : super(key: key);
 
