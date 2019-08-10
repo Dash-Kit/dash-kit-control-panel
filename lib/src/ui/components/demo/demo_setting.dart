@@ -14,7 +14,7 @@ class DemoSetting extends StatelessWidget implements ControlPanelSetting {
   final DemoSettingProps props;
 
   @override
-  String get settingId => runtimeType.toString();
+  Setting get setting => Setting(id: runtimeType.toString());
 
   const DemoSetting(this.props, {Key key}) : super(key: key);
 

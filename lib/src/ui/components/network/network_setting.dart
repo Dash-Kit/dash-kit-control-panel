@@ -12,7 +12,7 @@ class NetworkSetting extends StatelessWidget implements ControlPanelSetting {
   final NetworkSettingProps props;
 
   @override
-  String get settingId => runtimeType.toString();
+  Setting get setting => Setting(id: runtimeType.toString());
 
   const NetworkSetting(this.props, {Key key}) : super(key: key);
 

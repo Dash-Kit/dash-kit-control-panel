@@ -21,7 +21,7 @@ class PushNotificationsSetting extends StatefulWidget
       _PushNotificationsSettingState();
 
   @override
-  String get settingId => runtimeType.toString();
+  Setting get setting => Setting(id: runtimeType.toString());
 }
 
 class _PushNotificationsSettingState extends State<PushNotificationsSetting> {

@@ -38,6 +38,7 @@ Future<List<ControlPanelSetting>> controlPanelConfig({
   );
 
   return [
+    VersionSetting(),
     DemoSetting(demoProps),
     ProxySetting(proxyProps),
     PushNotificationsSetting(pushProps),
