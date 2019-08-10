@@ -1,0 +1,52 @@
+PODS:
+  - alice (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - open_file (0.0.1):
+    - Flutter
+  - package_info (0.0.1):
+    - Flutter
+  - path_provider (0.0.1):
+    - Flutter
+  - "permission_handler (3.2.1+1)":
+    - Flutter
+  - shared_preferences (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - alice (from `.symlinks/plugins/alice/ios`)
+  - Flutter (from `.symlinks/flutter/ios`)
+  - open_file (from `.symlinks/plugins/open_file/ios`)
+  - package_info (from `.symlinks/plugins/package_info/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
+
+EXTERNAL SOURCES:
+  alice:
+    :path: ".symlinks/plugins/alice/ios"
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  open_file:
+    :path: ".symlinks/plugins/open_file/ios"
+  package_info:
+    :path: ".symlinks/plugins/package_info/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
+
+SPEC CHECKSUMS:
+  alice: 0f49577498c6d1abee1d488e29d0a79a3e2860a1
+  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
+  package_info: 78cabb3c322943c55d39676f4a5bfc748c01d055
+  path_provider: f96fff6166a8867510d2c25fdcc346327cc4b259
+  permission_handler: 6a1b2f94f866da8bd19fa67f3c8f4b9f38580efb
+  shared_preferences: 1feebfa37bb57264736e16865e7ffae7fc99b523
+
+PODFILE CHECKSUM: 33f1a3c03960c530ad5380c47722c19f50106be1
+
+COCOAPODS: 1.7.5
