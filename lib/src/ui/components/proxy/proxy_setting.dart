@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_platform_control_panel/src/panel/control_panel_setting.dart';
 import 'package:flutter_platform_control_panel/src/services/proxy_manager.dart';
+import 'package:flutter_platform_control_panel/src/ui/components/setting_group.dart';
 
 typedef OnProxyIpChanged = void Function(String);
 typedef OnProxyModeChanged = void Function(bool);
@@ -52,7 +53,10 @@ class ProxySetting extends StatefulWidget implements ControlPanelSetting {
   final ProxySettingProps props;
 
   @override
-  Setting get setting => Setting(id: runtimeType.toString());
+  Setting get setting => Setting(
+        id: runtimeType.toString(),
+        title: 'Proxy',
+      );
 
   const ProxySetting(this.props, {Key key}) : super(key: key);
 
@@ -84,26 +88,29 @@ class _ProxySettingState extends State<ProxySetting> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Form(
-        key: proxyForm,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Expanded(child: buildProxyInputField()),
-                buildProxyModeButton(),
-              ],
-            ),
-          ],
+    return SettingGroup(
+      setting: widget.setting,
+      child: Container(
+        padding: EdgeInsets.only(top: 6, bottom: 4),
+        child: Form(
+          key: proxyForm,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Expanded(child: _buildProxyInputField()),
+                  _buildProxyModeButton(),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Padding buildProxyModeButton() {
+  Padding _buildProxyModeButton() {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
       child: Container(
@@ -133,7 +140,7 @@ class _ProxySettingState extends State<ProxySetting> {
     );
   }
 
-  TextFormField buildProxyInputField() {
+  TextFormField _buildProxyInputField() {
     return TextFormField(
       focusNode: proxyIpFieldFocusNode,
       controller: proxyIpController,
