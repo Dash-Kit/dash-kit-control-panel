@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_platform_control_panel/src/panel/control_panel_setting.dart';
+import 'package:flutter_platform_control_panel/src/ui/components/setting_group.dart';
 
 class PushNotificationsSettingProps {
   final Future<String> getToken;
@@ -21,7 +22,10 @@ class PushNotificationsSetting extends StatefulWidget
       _PushNotificationsSettingState();
 
   @override
-  Setting get setting => Setting(id: runtimeType.toString());
+  Setting get setting => Setting(
+        id: runtimeType.toString(),
+        title: 'Push Notifications',
+      );
 }
 
 class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
@@ -45,25 +49,28 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Form(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Expanded(child: buildPushTokenInputField()),
-                buildCopyTokenButton(),
-              ],
-            ),
-          ],
+    return SettingGroup(
+      setting: widget.setting,
+      child: Container(
+        padding: EdgeInsets.only(top: 6, bottom: 4),
+        child: Form(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Expanded(child: _buildPushTokenInputField()),
+                  _buildCopyTokenButton(),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Padding buildCopyTokenButton() {
+  Padding _buildCopyTokenButton() {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
       child: Container(
@@ -81,13 +88,13 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
               letterSpacing: 0.2,
             ),
           ),
-          onPressed: hasToken ? copyTokenToClipboard : null,
+          onPressed: hasToken ? _copyTokenToClipboard : null,
         ),
       ),
     );
   }
 
-  TextFormField buildPushTokenInputField() {
+  TextFormField _buildPushTokenInputField() {
     return TextFormField(
       controller: tokenController,
       decoration: InputDecoration(
@@ -111,7 +118,7 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
     );
   }
 
-  void copyTokenToClipboard() {
+  void _copyTokenToClipboard() {
     Clipboard.setData(ClipboardData(text: token));
 
     final snackBar = SnackBar(
