@@ -12,8 +12,8 @@ class ControlPanelTitle extends StatelessWidget {
       style: TextStyle(
         color: Colors.green,
         fontSize: 18,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 1.5,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 1.7,
       ),
     );
   }

@@ -2,9 +2,11 @@ import 'package:flutter/widgets.dart';
 
 class Setting {
   final String id;
+  final String title;
 
   Setting({
     @required this.id,
+    this.title,
   });
 }
 
