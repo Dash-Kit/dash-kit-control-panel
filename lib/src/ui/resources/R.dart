@@ -8,6 +8,4 @@ final R = _R();
 
 class _R {
   final color = _ColorRes();
-
-  static const c = Colors.red;
 }
