@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_control_panel/src/panel/control_panel_setting.dart';
 import 'package:flutter_platform_control_panel/src/ui/components/control_panel_title.dart';
+import 'package:flutter_platform_control_panel/src/ui/resources/R.dart';
 
 class ControlPanelPage extends StatelessWidget {
   final List<ControlPanelSetting> settings;
@@ -13,9 +14,9 @@ class ControlPanelPage extends StatelessWidget {
       primary: true,
       appBar: AppBar(
         title: ControlPanelTitle(title: 'Control Panel'),
-        backgroundColor: Color.fromARGB(155, 40, 40, 40),
+        backgroundColor: R.color.appBarBackground,
       ),
-      backgroundColor: Color.fromARGB(155, 60, 60, 60),
+      backgroundColor: R.color.panelBackground,
       body: SafeArea(
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
@@ -23,15 +24,16 @@ class ControlPanelPage extends StatelessWidget {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            child: buildSettings(),
+            child: _buildSettings(),
           ),
         ),
       ),
     );
   }
 
-  Column buildSettings() {
-    return Column(
+  Widget _buildSettings() {
+    return ListView(
+      padding: EdgeInsets.symmetric(vertical: 12),
       children: settings ?? [],
     );
   }
