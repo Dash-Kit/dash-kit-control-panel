@@ -5,6 +5,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_platform_control_panel/control_panel.dart';
 import 'package:meta/meta.dart';
 
+String _proxyIp;
+
 Future<List<ControlPanelSetting>> controlPanelConfig({
   @required Alice alice,
   List<Dio> dios = const [],
@@ -16,17 +18,9 @@ Future<List<ControlPanelSetting>> controlPanelConfig({
     },
   );
 
-  final proxyProps = await ProxySettingProps.standart((proxyIP) {
-    dios.forEach((dio) {
-      final adapter = dio.httpClientAdapter as DefaultHttpClientAdapter;
-
-      adapter.onHttpClientCreate = (HttpClient client) {
-        client.findProxy =
-            proxyIP != null ? (uri) => "PROXY $proxyIP:8888" : null;
-
-        client.badCertificateCallback = (cert, host, port) => proxyIP != null;
-      };
-    });
+  _configureProxy(dios);
+  final proxyProps = await ProxySettingProps.standart((proxyIpAddress) {
+    _proxyIp = proxyIpAddress;
   });
 
   final networkProps = NetworkSettingProps(
@@ -44,4 +38,18 @@ Future<List<ControlPanelSetting>> controlPanelConfig({
     PushNotificationsSetting(pushProps),
     NetworkSetting(networkProps),
   ];
+}
+
+void _configureProxy(List<Dio> dios) {
+  dios.forEach((dio) {
+    final adapter = dio.httpClientAdapter as DefaultHttpClientAdapter;
+
+    adapter.onHttpClientCreate = (HttpClient client) {
+      client.findProxy = (uri) {
+        return _proxyIp != null ? 'PROXY $_proxyIp:8888' : "DIRECT";
+      };
+
+      client.badCertificateCallback = (cert, host, port) => _proxyIp != null;
+    };
+  });
 }

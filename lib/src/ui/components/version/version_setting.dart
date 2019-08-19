@@ -43,7 +43,7 @@ class _VersionSettingState extends State<VersionSetting> {
   }
 
   Widget _buildVersionInfo() {
-    final versionInfo = fields.entries.first;
+    final versionInfo = fields.entries.isNotEmpty ? fields.entries.first : null;
     if (versionInfo == null) {
       return Container();
     }
