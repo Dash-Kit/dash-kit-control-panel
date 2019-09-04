@@ -16,3 +16,4 @@ export 'src/ui/control_panel_gate.dart';
 
 export 'src/panel/control_panel.dart';
 export 'src/panel/control_panel_setting.dart';
+export 'src/panel/control_panel_settings_provider.dart';

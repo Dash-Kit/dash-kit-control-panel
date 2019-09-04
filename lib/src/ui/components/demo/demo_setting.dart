@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_control_panel/src/panel/control_panel_setting.dart';
+import 'package:flutter_platform_control_panel/src/services/demo_mode.dart';
 import 'package:flutter_platform_control_panel/src/ui/components/setting_group.dart';
 
 typedef OnDemoModeChanged = void Function(bool);
 
 class DemoSettingProps {
   final OnDemoModeChanged onDemoModeChanged;
-  final bool initialValue;
 
-  DemoSettingProps({this.onDemoModeChanged, this.initialValue});
+  DemoSettingProps({this.onDemoModeChanged});
 }
 
 class DemoSetting extends StatefulWidget implements ControlPanelSetting {
@@ -31,7 +31,8 @@ class _DemoSettingState extends State<DemoSetting> {
 
   @override
   void initState() {
-    isEnabled = widget.props.initialValue ?? false;
+    isEnabled = DemoMode.isEnabled;
+
     super.initState();
   }
 
@@ -69,6 +70,10 @@ class _DemoSettingState extends State<DemoSetting> {
   void onChanged(bool value) {
     setState(() => isEnabled = value);
 
-    widget.props.onDemoModeChanged(value);
+    DemoMode.isEnabled = value;
+
+    if (widget.props.onDemoModeChanged != null) {
+      widget.props.onDemoModeChanged(value);
+    }
   }
 }
