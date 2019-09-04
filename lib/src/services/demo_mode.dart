@@ -31,7 +31,7 @@ class DemoMode {
     void Function() onEnabled,
     void Function() onDisabled,
   }) {
-    return _onDemoModeChanged.stream.listen((isEnabled) {
+    final notify = (isEnabled) {
       if (isEnabled && onEnabled != null) {
         onEnabled();
       }
@@ -39,6 +39,10 @@ class DemoMode {
       if (!isEnabled && onDisabled != null) {
         onDisabled();
       }
-    });
+    };
+
+    notify(isEnabled);
+
+    return _onDemoModeChanged.stream.listen(notify);
   }
 }
