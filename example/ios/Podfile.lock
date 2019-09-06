@@ -39,7 +39,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences/ios"
 
 SPEC CHECKSUMS:
-  alice: 0f49577498c6d1abee1d488e29d0a79a3e2860a1
+  alice: 68e5a13050064c354f9a4484f9dc9091da844a5c
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
   open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
   package_info: 78cabb3c322943c55d39676f4a5bfc748c01d055

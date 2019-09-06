@@ -6,7 +6,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "4c6c2d4a58bd837be7b5eb16a22568d3427a8ffd"
+      resolved-ref: f37909d6af03cde35b181d149ee9e666faf1e828
       url: "git://github.com/MrtnvM/alice.git"
     source: git
     version: "0.0.10"
@@ -125,13 +125,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
-  permission_handler:
-    dependency: transitive
-    description:
-      name: permission_handler
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.2.1+1"
   quiver:
     dependency: transitive
     description:
