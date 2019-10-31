@@ -42,6 +42,7 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
       ProxySetting(proxyProps),
       PushNotificationsSetting(pushProps),
       NetworkSetting(networkProps),
+      LicenseSetting(),
     ];
   }
 
