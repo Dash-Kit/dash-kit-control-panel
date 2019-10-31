@@ -3,6 +3,7 @@ library flutter_platform_control_panel;
 // MARK: Settings
 
 export 'src/ui/components/demo/demo_setting.dart';
+export 'src/ui/components/license/license_setting.dart';
 export 'src/ui/components/proxy/proxy_setting.dart';
 export 'src/ui/components/network/network_setting.dart';
 export 'src/ui/components/push_notifications/push_notifications_setting.dart';
