@@ -1,7 +1,7 @@
 name: flutter_platform_control_panel
 description: Revolutionary tool for configuration Flutter apps
 version: 0.0.1
-author: Flutter Platform Team 
+author: Flutter Platform Team
 homepage:
 
 environment:
@@ -17,7 +17,7 @@ dependencies:
       ref: v0.0.5
 
   shared_preferences: ">=0.5.3 <1.0.0"
-  package_info: 0.4.0+6
+  package_info: 0.4.0+13
 
 dev_dependencies:
   flutter_test:
