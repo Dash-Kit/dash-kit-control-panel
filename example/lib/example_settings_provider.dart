@@ -14,6 +14,7 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
 
   ExampleSettingsProvider({@required this.alice, @required this.dios}) {
     _configureProxy(dios);
+    _initLogger();
   }
 
   @override
@@ -43,6 +44,7 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
       PushNotificationsSetting(pushProps),
       NetworkSetting(networkProps),
       LicenseSetting(),
+      LogConsoleButton(),
     ];
   }
 
@@ -58,5 +60,15 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
         client.badCertificateCallback = (cert, host, port) => _proxyIp != null;
       };
     });
+  }
+
+  void _initLogger() {
+    Logger.initBufferSize(bufferSize: 25);
+
+    Logger.v("Verbose log");
+    Logger.d("Debug log");
+    Logger.i("Info log");
+    Logger.w("Warning log");
+    Logger.e("Error log");
   }
 }
