@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AnsiParser {
+  AnsiParser(this.dark);
+
   static const TEXT = 0, BRACKET = 1, CODE = 2;
 
   final bool dark;
-
-  AnsiParser(this.dark);
 
   Color foreground;
   Color background;
@@ -15,12 +15,12 @@ class AnsiParser {
     spans = [];
     var state = TEXT;
     StringBuffer buffer;
-    var text = StringBuffer();
+    final text = StringBuffer();
     var code = 0;
     List<int> codes;
 
-    for (var i = 0, n = s.length; i < n; i++) {
-      var c = s[i];
+    for (var i = 0; i < s.length; i++) {
+      final c = s[i];
 
       switch (state) {
         case TEXT:
@@ -46,7 +46,7 @@ class AnsiParser {
 
         case CODE:
           buffer.write(c);
-          var codeUnit = c.codeUnitAt(0);
+          final codeUnit = c.codeUnitAt(0);
           if (codeUnit >= 48 && codeUnit <= 57) {
             code = code * 10 + codeUnit - 48;
             continue;
@@ -111,6 +111,8 @@ class AnsiParser {
         return dark ? Colors.red[300] : Colors.red[700];
       case 199:
         return dark ? Colors.pink[300] : Colors.pink[700];
+      default:
+        return foreground ? Colors.black : Colors.transparent;
     }
   }
 

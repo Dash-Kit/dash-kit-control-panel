@@ -1,12 +1,12 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProxyManager {
+  ProxyManager._();
+
   static const _PROXY_IP_ADDRESS = 'control_panel.proxy_ip_address';
   static const _IS_PROXY_ENABLED = 'control_panel.is_proxy_enabled';
 
   static final shared = ProxyManager._();
-
-  ProxyManager._();
 
   Future<bool> isProxyEnabled() async {
     final prefs = await SharedPreferences.getInstance();

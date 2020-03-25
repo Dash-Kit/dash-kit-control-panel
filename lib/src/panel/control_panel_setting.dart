@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 
 class Setting {
-  final String id;
-  final String title;
-
   Setting({
     @required this.id,
     this.title,
   });
+
+  final String id;
+  final String title;
 }
 
 abstract class ControlPanelSetting extends Widget {

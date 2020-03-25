@@ -4,18 +4,18 @@ import 'package:flutter_platform_control_panel/src/panel/control_panel_setting.d
 import 'package:flutter_platform_control_panel/src/ui/components/setting_group.dart';
 
 class PushNotificationsSettingProps {
-  final Future<String> getToken;
-
   PushNotificationsSettingProps({
     this.getToken,
   });
+
+  final Future<String> getToken;
 }
 
 class PushNotificationsSetting extends StatefulWidget
     implements ControlPanelSetting {
-  final PushNotificationsSettingProps props;
-
   const PushNotificationsSetting(this.props, {Key key}) : super(key: key);
+
+  final PushNotificationsSettingProps props;
 
   @override
   _PushNotificationsSettingState createState() =>
@@ -52,7 +52,7 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
     return SettingGroup(
       setting: widget.setting,
       child: Container(
-        padding: EdgeInsets.only(top: 6, bottom: 4),
+        padding: const EdgeInsets.only(top: 6, bottom: 4),
         child: Form(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +77,7 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
         width: 70,
         height: 30,
         child: RaisedButton(
-          padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
           color: hasToken ? Colors.green.withAlpha(245) : Colors.grey.shade700,
           disabledColor: Colors.grey.shade700,
           child: Text(
@@ -103,7 +103,7 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
           color: Colors.white70,
           fontSize: 14,
         ),
-        contentPadding: EdgeInsets.only(bottom: 4, top: 4),
+        contentPadding: const EdgeInsets.only(bottom: 4, top: 4),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
@@ -121,7 +121,7 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
   void _copyTokenToClipboard() {
     Clipboard.setData(ClipboardData(text: token));
 
-    final snackBar = SnackBar(
+    const snackBar = SnackBar(
       content: Text('Device token copied to the clipboard'),
       duration: Duration(seconds: 1),
     );

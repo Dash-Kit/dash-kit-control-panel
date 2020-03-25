@@ -3,7 +3,7 @@ import 'package:flutter_platform_control_panel/src/ui/components/logger/log_cons
 
 class LogConsoleModal extends ModalRoute<void> {
   @override
-  Duration get transitionDuration => Duration(milliseconds: 200);
+  Duration get transitionDuration => const Duration(milliseconds: 200);
 
   @override
   bool get opaque => false;
@@ -26,7 +26,7 @@ class LogConsoleModal extends ModalRoute<void> {
     Animation<double> animation,
     Animation<double> secondaryAnimation,
   ) {
-    return Scaffold(
+    return const Scaffold(
       body: LogConsole(
         dark: false,
         showCloseButton: true,
@@ -37,10 +37,10 @@ class LogConsoleModal extends ModalRoute<void> {
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation, Widget child) {
-    var begin = Offset(0.0, 1.0);
-    var end = Offset.zero;
-    var tween = Tween(begin: begin, end: end);
-    var offsetAnimation = animation.drive(tween);
+    const begin = Offset(0.0, 1.0);
+    final end = Offset.zero;
+    final tween = Tween(begin: begin, end: end);
+    final offsetAnimation = animation.drive(tween);
 
     return SlideTransition(
       position: offsetAnimation,

@@ -4,7 +4,7 @@ class DemoMode {
   static var _isDemoModeEnabled = false;
   static final _onDemoModeChanged = StreamController<bool>.broadcast();
 
-  static get isEnabled => _isDemoModeEnabled;
+  static bool get isEnabled => _isDemoModeEnabled;
 
   static set isEnabled(bool isEnabled) {
     if (_isDemoModeEnabled != isEnabled) {

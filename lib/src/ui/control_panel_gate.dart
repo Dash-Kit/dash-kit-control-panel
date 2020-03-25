@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_control_panel/src/panel/control_panel.dart';
 
 class ControlPanelGate extends StatelessWidget {
+  const ControlPanelGate({Key key, @required this.child}) : super(key: key);
+
   static DateTime _lastDoubleTapEvent;
 
   final Widget child;
-
-  const ControlPanelGate({Key key, @required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

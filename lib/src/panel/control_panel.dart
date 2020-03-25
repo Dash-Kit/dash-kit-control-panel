@@ -17,10 +17,11 @@ class ControlPanel {
     isInitialized = true;
   }
 
-  static void open() async {
+  static Future<void> open() async {
     if (!isInitialized) {
-      throw Exception(
-          'Control Panel is not initialized. Call `initialize` method before opening the panel.');
+      const message = 'Control Panel is not initialized. '
+          'Call `initialize` method before opening the panel.';
+      throw Exception(message);
     }
 
     final settings = await _settingsProvider.buildSettings();

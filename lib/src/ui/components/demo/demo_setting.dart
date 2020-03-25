@@ -6,12 +6,14 @@ import 'package:flutter_platform_control_panel/src/ui/components/setting_group.d
 typedef OnDemoModeChanged = void Function(bool);
 
 class DemoSettingProps {
-  final OnDemoModeChanged onDemoModeChanged;
-
   DemoSettingProps({this.onDemoModeChanged});
+
+  final OnDemoModeChanged onDemoModeChanged;
 }
 
 class DemoSetting extends StatefulWidget implements ControlPanelSetting {
+  const DemoSetting(this.props, {Key key}) : super(key: key);
+
   final DemoSettingProps props;
 
   @override
@@ -19,8 +21,6 @@ class DemoSetting extends StatefulWidget implements ControlPanelSetting {
         id: runtimeType.toString(),
         title: 'Demo',
       );
-
-  const DemoSetting(this.props, {Key key}) : super(key: key);
 
   @override
   _DemoSettingState createState() => _DemoSettingState();
@@ -54,7 +54,7 @@ class _DemoSettingState extends State<DemoSetting> {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Switch(
               value: isEnabled,
               onChanged: onChanged,

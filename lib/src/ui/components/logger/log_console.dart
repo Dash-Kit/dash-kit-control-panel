@@ -1,35 +1,35 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_control_panel/src/services/logger/logger.dart';
 import 'package:flutter_platform_control_panel/src/ui/components/logger/ansi_parser.dart';
-import 'package:flutter_platform_control_panel/src/ui/components/logger/console_output.dart';
 import 'package:logger/logger.dart';
 
 class RenderedEvent {
+  RenderedEvent(this.id, this.level, this.span, this.lowerCaseText);
+
   final int id;
   final Level level;
   final TextSpan span;
   final String lowerCaseText;
-
-  RenderedEvent(this.id, this.level, this.span, this.lowerCaseText);
 }
 
 class LogConsole extends StatefulWidget {
+  const LogConsole({this.dark = false, this.showCloseButton = false});
+
   final bool dark;
   final bool showCloseButton;
-
-  LogConsole({this.dark = false, this.showCloseButton = false});
 
   @override
   _LogConsoleState createState() => _LogConsoleState();
 }
 
 class _LogConsoleState extends State<LogConsole> {
-  ListQueue<RenderedEvent> _renderedBuffer = ListQueue();
+  final ListQueue<RenderedEvent> _renderedBuffer = ListQueue();
   List<RenderedEvent> _filteredBuffer = [];
 
-  var _scrollController = ScrollController();
-  var _filterController = TextEditingController();
+  final _scrollController = ScrollController();
+  final _filterController = TextEditingController();
 
   Level _filterLevel = Level.verbose;
   double _logFontSize = 14;
@@ -52,8 +52,11 @@ class _LogConsoleState extends State<LogConsole> {
     };
 
     _scrollController.addListener(() {
-      if (!_scrollListenerEnabled) return;
-      var scrolledToBottom = _scrollController.offset >=
+      if (!_scrollListenerEnabled) {
+        return;
+      }
+
+      final scrolledToBottom = _scrollController.offset >=
           _scrollController.position.maxScrollExtent;
       setState(() {
         _followBottom = scrolledToBottom;
@@ -73,12 +76,13 @@ class _LogConsoleState extends State<LogConsole> {
   }
 
   void _refreshFilter() {
-    var newFilteredBuffer = _renderedBuffer.where((it) {
-      var logLevelMatches = it.level.index >= _filterLevel.index;
+    final newFilteredBuffer = _renderedBuffer.where((it) {
+      final logLevelMatches = it.level.index >= _filterLevel.index;
+
       if (!logLevelMatches) {
         return false;
       } else if (_filterController.text.isNotEmpty) {
-        var filterText = _filterController.text.toLowerCase();
+        final filterText = _filterController.text.toLowerCase();
         return it.lowerCaseText.contains(filterText);
       } else {
         return true;
@@ -121,9 +125,9 @@ class _LogConsoleState extends State<LogConsole> {
         ),
         floatingActionButton: AnimatedOpacity(
           opacity: _followBottom ? 0 : 1,
-          duration: Duration(milliseconds: 150),
+          duration: const Duration(milliseconds: 150),
           child: Padding(
-            padding: EdgeInsets.only(bottom: 60),
+            padding: const EdgeInsets.only(bottom: 60),
             child: FloatingActionButton(
               mini: true,
               clipBehavior: Clip.antiAlias,
@@ -150,7 +154,7 @@ class _LogConsoleState extends State<LogConsole> {
             shrinkWrap: true,
             controller: _scrollController,
             itemBuilder: (context, index) {
-              var logEntry = _filteredBuffer[index];
+              final logEntry = _filteredBuffer[index];
               return Text.rich(
                 logEntry.span,
                 key: Key(logEntry.id.toString()),
@@ -171,13 +175,13 @@ class _LogConsoleState extends State<LogConsole> {
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Text(
-            "Log Console",
+            'Log Console',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
@@ -214,41 +218,41 @@ class _LogConsoleState extends State<LogConsole> {
         children: <Widget>[
           Expanded(
             child: TextField(
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
               controller: _filterController,
               onChanged: (s) => _refreshFilter(),
-              decoration: InputDecoration(
-                labelText: "Filter log output",
+              decoration: const InputDecoration(
+                labelText: 'Filter log output',
                 border: OutlineInputBorder(),
               ),
             ),
           ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
           DropdownButton(
             value: _filterLevel,
-            items: [
+            items: const [
               DropdownMenuItem(
-                child: Text("VERBOSE"),
+                child: Text('VERBOSE'),
                 value: Level.verbose,
               ),
               DropdownMenuItem(
-                child: Text("DEBUG"),
+                child: Text('DEBUG'),
                 value: Level.debug,
               ),
               DropdownMenuItem(
-                child: Text("INFO"),
+                child: Text('INFO'),
                 value: Level.info,
               ),
               DropdownMenuItem(
-                child: Text("WARNING"),
+                child: Text('WARNING'),
                 value: Level.warning,
               ),
               DropdownMenuItem(
-                child: Text("ERROR"),
+                child: Text('ERROR'),
                 value: Level.error,
               ),
               DropdownMenuItem(
-                child: Text("WTF"),
+                child: Text('WTF'),
                 value: Level.wtf,
               )
             ],
@@ -262,17 +266,17 @@ class _LogConsoleState extends State<LogConsole> {
     );
   }
 
-  void _scrollToBottom() async {
+  Future<void> _scrollToBottom() async {
     _scrollListenerEnabled = false;
 
     setState(() {
       _followBottom = true;
     });
 
-    var scrollPosition = _scrollController.position;
+    final scrollPosition = _scrollController.position;
     await _scrollController.animateTo(
       scrollPosition.maxScrollExtent,
-      duration: new Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 400),
       curve: Curves.easeOut,
     );
 
@@ -280,8 +284,8 @@ class _LogConsoleState extends State<LogConsole> {
   }
 
   RenderedEvent _renderEvent(OutputEvent event) {
-    var parser = AnsiParser(widget.dark);
-    var text = event.lines.join('\n');
+    final parser = AnsiParser(widget.dark);
+    final text = event.lines.join('\n');
     parser.parse(text);
     return RenderedEvent(
       _currentId++,
@@ -299,10 +303,10 @@ class _LogConsoleState extends State<LogConsole> {
 }
 
 class LogBar extends StatelessWidget {
+  const LogBar({this.dark, this.child});
+
   final bool dark;
   final Widget child;
-
-  LogBar({this.dark, this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -321,7 +325,7 @@ class LogBar extends StatelessWidget {
         child: Material(
           color: dark ? Colors.blueGrey[900] : Colors.white,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+            padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
             child: child,
           ),
         ),

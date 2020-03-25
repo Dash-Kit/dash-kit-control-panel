@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ControlPanelTitle extends StatelessWidget {
-  final String title;
-
   const ControlPanelTitle({Key key, @required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ class LogConsoleButton extends StatelessWidget implements ControlPanelSetting {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: RaisedButton(
         color: Colors.green.withAlpha(240),
         child: FittedBox(
