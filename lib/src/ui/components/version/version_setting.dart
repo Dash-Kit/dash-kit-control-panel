@@ -31,7 +31,7 @@ class _VersionSettingState extends State<VersionSetting> {
       onTap: () => setState(() => showFullDetails = !showFullDetails),
       child: Container(
         child: AnimatedCrossFade(
-          duration: Duration(milliseconds: 400),
+          duration: const Duration(milliseconds: 400),
           firstChild: _buildVersionInfo(),
           secondChild: _buildAppInfoItems(),
           crossFadeState: !showFullDetails
@@ -67,7 +67,7 @@ class _VersionSettingState extends State<VersionSetting> {
 
   Container _buildInfoField(String title, String value) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 8, 0, 8),
+      margin: const EdgeInsets.fromLTRB(0, 8, 0, 8),
       child: Row(
         children: <Widget>[
           Text(
@@ -78,7 +78,7 @@ class _VersionSettingState extends State<VersionSetting> {
               fontSize: 15,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             value ?? '',
             style: TextStyle(
@@ -115,7 +115,7 @@ class _VersionSettingState extends State<VersionSetting> {
         };
       });
     }).catchError((error) {
-      print('Error on getting package info: ' + error?.toString());
+      print('Error on getting package info: ${error?.toString()}');
     });
   }
 }

@@ -1,18 +1,8 @@
-import 'package:alice/alice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_control_panel/src/panel/control_panel_setting.dart';
+import 'package:flutter_platform_control_panel/src/ui/components/logger/log_console_modal.dart';
 
-class NetworkSettingProps {
-  NetworkSettingProps({this.alice});
-
-  final Alice alice;
-}
-
-class NetworkSetting extends StatelessWidget implements ControlPanelSetting {
-  const NetworkSetting(this.props, {Key key}) : super(key: key);
-
-  final NetworkSettingProps props;
-
+class LogConsoleButton extends StatelessWidget implements ControlPanelSetting {
   @override
   Setting get setting => Setting(id: runtimeType.toString());
 
@@ -24,7 +14,7 @@ class NetworkSetting extends StatelessWidget implements ControlPanelSetting {
         color: Colors.green.withAlpha(240),
         child: FittedBox(
           child: Text(
-            'Show network activity',
+            'Show logs',
             style: TextStyle(
               color: Colors.white.withAlpha(240),
               letterSpacing: 0.4,
@@ -32,7 +22,7 @@ class NetworkSetting extends StatelessWidget implements ControlPanelSetting {
             ),
           ),
         ),
-        onPressed: () => props.alice.showInspector(),
+        onPressed: () => Navigator.of(context).push(LogConsoleModal()),
       ),
     );
   }

@@ -2,14 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_control_panel/control_panel.dart';
-import 'package:flutter_platform_control_panel/src/ui/resources/R.dart';
+import 'package:flutter_platform_control_panel/src/ui/resources/r.dart';
 
 class SettingGroup extends StatelessWidget {
-  final Widget child;
-  final Color backgroundColor;
-  final VoidCallback onTap;
-  final Setting setting;
-
   const SettingGroup({
     Key key,
     this.setting,
@@ -17,6 +12,11 @@ class SettingGroup extends StatelessWidget {
     this.backgroundColor,
     this.onTap,
   }) : super(key: key);
+
+  final Widget child;
+  final Color backgroundColor;
+  final VoidCallback onTap;
+  final Setting setting;
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +43,10 @@ class SettingGroup extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 22),
+        margin: const EdgeInsets.symmetric(horizontal: 22),
         padding: EdgeInsets.symmetric(horizontal: 4, vertical: sqrt1_2),
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 40, 40, 40),
+          color: const Color.fromARGB(255, 40, 40, 40),
           border: Border.all(color: R.color.settingGroupBorder),
           borderRadius: BorderRadius.circular(3),
         ),
@@ -60,8 +60,8 @@ class SettingGroup extends StatelessWidget {
 
   Widget _buildSettingContent() {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       decoration: BoxDecoration(
         border: Border.all(color: R.color.settingGroupBorder),
         borderRadius: BorderRadius.circular(5),

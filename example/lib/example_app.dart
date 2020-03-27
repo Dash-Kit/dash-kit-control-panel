@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_control_panel/control_panel.dart';
 
 class ExampleApp extends StatelessWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
-  final VoidCallback sendTestRequest;
-
   const ExampleApp({
     Key key,
     this.navigatorKey,
     this.sendTestRequest,
   }) : super(key: key);
+
+  final GlobalKey<NavigatorState> navigatorKey;
+  final VoidCallback sendTestRequest;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +24,10 @@ class ExampleApp extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              ControlPanelGate(child: Text('Debug mode')),
-              SizedBox(height: 24),
+              const ControlPanelGate(child: Text('Debug mode')),
+              const SizedBox(height: 24),
               RaisedButton(
-                child: Text('Send Request'),
+                child: const Text('Send Request'),
                 onPressed: sendTestRequest,
               )
             ],

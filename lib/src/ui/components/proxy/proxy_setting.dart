@@ -8,11 +8,6 @@ typedef OnProxyIpChanged = void Function(String);
 typedef OnProxyModeChanged = void Function(bool);
 
 class ProxySettingProps {
-  final OnProxyIpChanged onProxyIpChanged;
-  final String initialProxyIpAddress;
-  final bool isEnabled;
-  final OnProxyModeChanged onProxyModeChanged;
-
   ProxySettingProps({
     this.isEnabled,
     this.onProxyModeChanged,
@@ -20,8 +15,13 @@ class ProxySettingProps {
     this.initialProxyIpAddress,
   });
 
-  static standart(OnProxyIpChanged onProxyChanged) async {
-    void _onProxyChanged() async {
+  final OnProxyIpChanged onProxyIpChanged;
+  final String initialProxyIpAddress;
+  final bool isEnabled;
+  final OnProxyModeChanged onProxyModeChanged;
+
+  static Future<dynamic> standart(OnProxyIpChanged onProxyChanged) async {
+    Future<void> _onProxyChanged() async {
       final isProxyEnabled = await ProxyManager.shared.isProxyEnabled();
       final proxyIP = await ProxyManager.shared.getProxyIpAddress();
 
@@ -50,6 +50,8 @@ class ProxySettingProps {
 }
 
 class ProxySetting extends StatefulWidget implements ControlPanelSetting {
+  const ProxySetting(this.props, {Key key}) : super(key: key);
+
   final ProxySettingProps props;
 
   @override
@@ -57,8 +59,6 @@ class ProxySetting extends StatefulWidget implements ControlPanelSetting {
         id: runtimeType.toString(),
         title: 'Proxy',
       );
-
-  const ProxySetting(this.props, {Key key}) : super(key: key);
 
   @override
   _ProxySettingState createState() => _ProxySettingState();
@@ -91,7 +91,7 @@ class _ProxySettingState extends State<ProxySetting> {
     return SettingGroup(
       setting: widget.setting,
       child: Container(
-        padding: EdgeInsets.only(top: 6, bottom: 4),
+        padding: const EdgeInsets.only(top: 6, bottom: 4),
         child: Form(
           key: proxyForm,
           child: Column(
@@ -117,9 +117,9 @@ class _ProxySettingState extends State<ProxySetting> {
         width: 70,
         height: 30,
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 500),
           child: RaisedButton(
-            padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
             color:
                 isProxyEnabled ? Colors.redAccent : Colors.green.withAlpha(245),
             disabledColor: Colors.grey.shade700,
@@ -150,7 +150,7 @@ class _ProxySettingState extends State<ProxySetting> {
           color: Colors.white70,
           fontSize: 14,
         ),
-        contentPadding: EdgeInsets.only(bottom: 4, top: 4),
+        contentPadding: const EdgeInsets.only(bottom: 4, top: 4),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
@@ -198,14 +198,14 @@ class _ProxySettingState extends State<ProxySetting> {
     }
 
     final components = value.split('.');
-    final error = 'Incorrect format of IP address';
+    const error = 'Incorrect format of IP address';
 
     if (components.length != 4) {
       return error;
     }
 
     final isNumberComponentsCorrect = components.fold(true, (prev, curr) {
-      int number = int.parse(curr);
+      final int number = int.parse(curr);
       return prev && number >= 0 && number < 256;
     });
 

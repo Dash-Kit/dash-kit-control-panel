@@ -7,14 +7,15 @@ import 'package:flutter_platform_control_panel/control_panel.dart';
 import 'package:meta/meta.dart';
 
 class ExampleSettingsProvider extends ControlPanelSettingsProvider {
+  ExampleSettingsProvider({@required this.alice, @required this.dios}) {
+    _configureProxy(dios);
+    _initLogger();
+  }
+
   final Alice alice;
   final List<Dio> dios;
 
   String _proxyIp;
-
-  ExampleSettingsProvider({@required this.alice, @required this.dios}) {
-    _configureProxy(dios);
-  }
 
   @override
   Future<List<ControlPanelSetting>> buildSettings() async {
@@ -42,21 +43,35 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
       ProxySetting(proxyProps),
       PushNotificationsSetting(pushProps),
       NetworkSetting(networkProps),
-      LicenseSetting(),
+      const LicenseSetting(),
+      LogConsoleButton(),
     ];
   }
 
   void _configureProxy(List<Dio> dios) {
-    dios.forEach((dio) {
-      final adapter = dio.httpClientAdapter as DefaultHttpClientAdapter;
+    for (final dio in dios) {
+      final adapter = dio.httpClientAdapter;
 
-      adapter.onHttpClientCreate = (HttpClient client) {
-        client.findProxy = (uri) {
-          return _proxyIp != null ? 'PROXY $_proxyIp:8888' : "DIRECT";
+      if (adapter is DefaultHttpClientAdapter) {
+        adapter.onHttpClientCreate = (HttpClient client) {
+          client.findProxy = (uri) {
+            return _proxyIp != null ? 'PROXY $_proxyIp:8888' : 'DIRECT';
+          };
+
+          client.badCertificateCallback =
+              (cert, host, port) => _proxyIp != null;
         };
+      }
+    }
+  }
 
-        client.badCertificateCallback = (cert, host, port) => _proxyIp != null;
-      };
-    });
+  void _initLogger() {
+    Logger.init(bufferSize: 25);
+
+    Logger.v('Verbose log');
+    Logger.d('Debug log');
+    Logger.i('Info log');
+    Logger.w('Warning log');
+    Logger.e('Error log');
   }
 }

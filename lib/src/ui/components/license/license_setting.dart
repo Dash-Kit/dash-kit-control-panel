@@ -1,16 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
 import 'package:flutter_platform_control_panel/src/panel/control_panel_setting.dart';
 
 class LicenseSetting extends StatefulWidget implements ControlPanelSetting {
+  const LicenseSetting({Key key}) : super(key: key);
+
   @override
   Setting get setting => Setting(
         id: runtimeType.toString(),
         title: 'License',
       );
-
-  const LicenseSetting({Key key}) : super(key: key);
 
   @override
   _LicenseSettingState createState() => _LicenseSettingState();
@@ -20,7 +21,7 @@ class _LicenseSettingState extends State<LicenseSetting> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: RaisedButton(
         color: Colors.green.withAlpha(240),
         child: FittedBox(

@@ -1,9 +1,9 @@
+import 'package:flutter_platform_control_panel/control_panel.dart';
+import 'package:flutter/material.dart';
 import 'package:alice/alice.dart';
 import 'package:dio/dio.dart';
 import 'package:example/example_app.dart';
 import './example_settings_provider.dart';
-import 'package:flutter_platform_control_panel/control_panel.dart';
-import 'package:flutter/material.dart';
 
 final alice = Alice();
 final navigatorKey = alice.getNavigatorKey();

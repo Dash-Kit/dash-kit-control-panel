@@ -2,7 +2,7 @@ library resources;
 
 import 'package:flutter/material.dart';
 
-part 'Colors.dart';
+part 'colors.dart';
 
 final R = _R();
 
