@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_platform_control_panel/src/panel/control_panel_setting.dart';
+import 'package:flutter_platform_control_panel/src/ui/components/push_notifications/push_notifications_page.dart';
 import 'package:flutter_platform_control_panel/src/ui/components/setting_group.dart';
 
 class PushNotificationsSettingProps {
@@ -57,16 +58,21 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Expanded(child: _buildPushTokenInputField()),
-                  _buildCopyTokenButton(),
-                ],
-              ),
+              _buildPushTokenField(),
+              _buildPushNotificationsButton()
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row _buildPushTokenField() {
+    return Row(
+      children: <Widget>[
+        Expanded(child: _buildPushTokenInputField()),
+        _buildCopyTokenButton(),
+      ],
     );
   }
 
@@ -115,6 +121,32 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
       keyboardType: TextInputType.text,
       maxLines: null,
       enabled: false,
+    );
+  }
+
+  Widget _buildPushNotificationsButton() {
+    return Container(
+      margin: EdgeInsets.only(top: 16),
+      alignment: Alignment.center,
+      child: RaisedButton(
+        color: Colors.blue.withAlpha(240),
+        child: Text(
+          'Show Push Notifications',
+          style: TextStyle(
+            color: Colors.white.withAlpha(240),
+            letterSpacing: 0.4,
+            fontSize: 14,
+          ),
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => PushNotificationsPage(),
+            ),
+          );
+        },
+      ),
     );
   }
 

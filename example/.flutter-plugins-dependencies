@@ -1,0 +1,1 @@
+{"_info":"// This is a generated file; do not edit or check into version control.","dependencyGraph":[{"name":"alice","dependencies":["path_provider","package_info","open_file"]},{"name":"open_file","dependencies":[]},{"name":"package_info","dependencies":[]},{"name":"path_provider","dependencies":[]},{"name":"shared_preferences","dependencies":[]}]}

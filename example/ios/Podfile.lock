@@ -8,8 +8,6 @@ PODS:
     - Flutter
   - path_provider (0.0.1):
     - Flutter
-  - "permission_handler (3.2.1+1)":
-    - Flutter
   - shared_preferences (0.0.1):
     - Flutter
 
@@ -19,7 +17,6 @@ DEPENDENCIES:
   - open_file (from `.symlinks/plugins/open_file/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
-  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
 
 EXTERNAL SOURCES:
@@ -33,20 +30,17 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/package_info/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
-  permission_handler:
-    :path: ".symlinks/plugins/permission_handler/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
 
 SPEC CHECKSUMS:
-  alice: 68e5a13050064c354f9a4484f9dc9091da844a5c
-  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  alice: 0f49577498c6d1abee1d488e29d0a79a3e2860a1
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
-  package_info: 78cabb3c322943c55d39676f4a5bfc748c01d055
+  package_info: 48b108e75b8802c2d5e126f208ef540561c98aef
   path_provider: f96fff6166a8867510d2c25fdcc346327cc4b259
-  permission_handler: 6a1b2f94f866da8bd19fa67f3c8f4b9f38580efb
   shared_preferences: 1feebfa37bb57264736e16865e7ffae7fc99b523
 
 PODFILE CHECKSUM: 33f1a3c03960c530ad5380c47722c19f50106be1
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4
