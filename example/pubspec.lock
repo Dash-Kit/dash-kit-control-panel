@@ -5,8 +5,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "v0.0.5"
-      resolved-ref: f26504028232e3fc0388da72fff42a1499b452ac
+      ref: "v0.0.6"
+      resolved-ref: "60464976aa9c6760d2866a7cdad5ccb32256a54f"
       url: "git://github.com/MrtnvM/alice.git"
     source: git
     version: "0.0.15"
@@ -201,7 +201,7 @@ packages:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.22.3"
+    version: "0.24.0"
   shared_preferences:
     dependency: transitive
     description:
@@ -278,5 +278,5 @@ packages:
     source: hosted
     version: "3.5.0"
 sdks:
-  dart: ">2.4.0 <3.0.0"
+  dart: ">=2.6.0 <3.0.0"
   flutter: ">=1.10.0 <2.0.0"
