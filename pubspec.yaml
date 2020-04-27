@@ -19,6 +19,7 @@ dependencies:
   shared_preferences: ">=0.5.3 <1.0.0"
   package_info: 0.4.0+13
   logger: ^0.8.3
+  device_preview: ^0.4.4
 
 dev_dependencies:
   flutter_test:
