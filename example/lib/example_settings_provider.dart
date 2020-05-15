@@ -10,6 +10,10 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
   ExampleSettingsProvider({@required this.alice, @required this.dios}) {
     _configureProxy(dios);
     _initLogger();
+
+    ProxySettingProps.init((proxyIpAddress) {
+      _proxyIp = proxyIpAddress;
+    });
   }
 
   final Alice alice;
