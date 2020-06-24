@@ -137,13 +137,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.12"
-  io:
-    dependency: transitive
-    description:
-      name: io
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.4"
   json_annotation:
     dependency: transitive
     description:
@@ -157,7 +150,7 @@ packages:
       name: logger
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.3"
+    version: "0.9.1"
   matcher:
     dependency: transitive
     description:
