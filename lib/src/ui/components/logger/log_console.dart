@@ -1,8 +1,8 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_control_panel/src/services/logger/logger.dart';
-import 'package:flutter_platform_control_panel/src/ui/components/logger/ansi_parser.dart';
+import 'package:dash_kit_control_panel/src/services/logger/logger.dart';
+import 'package:dash_kit_control_panel/src/ui/components/logger/ansi_parser.dart';
 import 'package:logger/logger.dart';
 
 class RenderedEvent {

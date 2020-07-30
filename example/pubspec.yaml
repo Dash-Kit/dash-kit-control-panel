@@ -12,7 +12,7 @@ dependencies:
 
   dio: ^3.0.3
 
-  flutter_platform_control_panel:
+  dash_kit_control_panel:
     path: ../
 
 dev_dependencies:

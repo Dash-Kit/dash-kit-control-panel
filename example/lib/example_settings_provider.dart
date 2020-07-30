@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:alice/alice.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_platform_control_panel/control_panel.dart';
+import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
 import 'package:meta/meta.dart';
 
 class ExampleSettingsProvider extends ControlPanelSettingsProvider {

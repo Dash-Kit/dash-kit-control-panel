@@ -1,5 +1,6 @@
 import 'dart:async';
 
+// ignore: avoid_classes_with_only_static_members
 class DemoMode {
   static var _isDemoModeEnabled = false;
   static final _onDemoModeChanged = StreamController<bool>.broadcast();
