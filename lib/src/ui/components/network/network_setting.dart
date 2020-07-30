@@ -1,6 +1,6 @@
 import 'package:alice/alice.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_control_panel/src/panel/control_panel_setting.dart';
+import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 
 class NetworkSettingProps {
   NetworkSettingProps({this.alice});

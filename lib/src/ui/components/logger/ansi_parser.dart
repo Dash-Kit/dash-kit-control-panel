@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AnsiParser {
   AnsiParser(this.dark);
 
+  // ignore: constant_identifier_names
   static const TEXT = 0, BRACKET = 1, CODE = 2;
 
   final bool dark;

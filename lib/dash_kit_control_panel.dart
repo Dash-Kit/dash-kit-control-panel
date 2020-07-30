@@ -1,4 +1,4 @@
-library flutter_platform_control_panel;
+library dash_kit_control_panel;
 
 // MARK: Panel Components
 
@@ -13,6 +13,7 @@ export 'src/services/logger/logger.dart';
 
 // MARK: Settings
 
+export 'src/ui/application.dart';
 export 'src/ui/components/demo/demo_setting.dart';
 export 'src/ui/components/device_preview/device_preview_setting.dart';
 export 'src/ui/components/license/license_setting.dart';
@@ -25,5 +26,4 @@ export 'src/ui/components/version/version_setting.dart';
 
 // MARK: UI Components
 
-export 'src/ui/application.dart';
 export 'src/ui/control_panel_gate.dart';

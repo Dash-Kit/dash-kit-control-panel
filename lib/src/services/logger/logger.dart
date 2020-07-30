@@ -1,4 +1,4 @@
-import 'package:flutter_platform_control_panel/src/services/logger/console_output.dart';
+import 'package:dash_kit_control_panel/src/services/logger/console_output.dart';
 import 'package:logger/logger.dart' as logger_dependency;
 
 final consoleOutput = ConsoleOutput();

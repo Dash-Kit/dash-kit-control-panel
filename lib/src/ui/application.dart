@@ -1,6 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_platform_control_panel/src/services/device_preview_mode.dart';
+import 'package:dash_kit_control_panel/src/services/device_preview_mode.dart';
 
 class Application extends StatelessWidget {
   const Application({@required this.child}) : assert(child != null);
