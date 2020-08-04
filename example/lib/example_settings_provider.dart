@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:alice/alice.dart';
+import 'package:alice_lightweight/alice.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';

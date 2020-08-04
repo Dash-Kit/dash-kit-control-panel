@@ -1,6 +1,6 @@
 import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
 import 'package:flutter/material.dart';
-import 'package:alice/alice.dart';
+import 'package:alice_lightweight/alice.dart';
 import 'package:dio/dio.dart';
 import 'package:example/example_app.dart';
 import './example_settings_provider.dart';
