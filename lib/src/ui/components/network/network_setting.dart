@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 
 class NetworkSettingProps {
-  NetworkSettingProps({this.alice});
+  NetworkSettingProps({required this.alice});
 
   final Alice alice;
 }
 
 class NetworkSetting extends StatelessWidget implements ControlPanelSetting {
-  const NetworkSetting(this.props, {Key key}) : super(key: key);
+  const NetworkSetting(this.props, {Key? key}) : super(key: key);
 
   final NetworkSettingProps props;
 

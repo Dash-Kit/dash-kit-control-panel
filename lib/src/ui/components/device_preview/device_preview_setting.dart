@@ -4,7 +4,7 @@ import 'package:dash_kit_control_panel/src/services/device_preview_mode.dart';
 
 class DevicePreviewSetting extends StatefulWidget
     implements ControlPanelSetting {
-  const DevicePreviewSetting({Key key}) : super(key: key);
+  const DevicePreviewSetting({Key? key}) : super(key: key);
 
   @override
   Setting get setting => Setting(
@@ -17,6 +17,8 @@ class DevicePreviewSetting extends StatefulWidget
 }
 
 class _DevicePreviewSettingState extends State<DevicePreviewSetting> {
+  _DevicePreviewSettingState(): isEnabled = DevicePreviewMode.isEnabled;
+
   bool isEnabled;
 
   @override
@@ -63,4 +65,5 @@ class _DevicePreviewSettingState extends State<DevicePreviewSetting> {
 
     DevicePreviewMode.isEnabled = value;
   }
+
 }

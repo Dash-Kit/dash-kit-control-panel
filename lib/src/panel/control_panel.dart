@@ -5,12 +5,12 @@ import 'package:dash_kit_control_panel/src/ui/control_panel_page.dart';
 // ignore: avoid_classes_with_only_static_members
 class ControlPanel {
   static bool isInitialized = false;
-  static GlobalKey<NavigatorState> _navigatorKey;
-  static ControlPanelSettingsProvider _settingsProvider;
+  static GlobalKey<NavigatorState>? _navigatorKey;
+  static ControlPanelSettingsProvider? _settingsProvider;
 
   static void initialize({
-    @required GlobalKey<NavigatorState> navigatorKey,
-    @required ControlPanelSettingsProvider settingsProvider,
+    required GlobalKey<NavigatorState> navigatorKey,
+    required ControlPanelSettingsProvider settingsProvider,
   }) {
     _navigatorKey = navigatorKey;
     _settingsProvider = settingsProvider;
@@ -25,9 +25,9 @@ class ControlPanel {
       throw Exception(message);
     }
 
-    final settings = await _settingsProvider.buildSettings();
+    final settings = await _settingsProvider!.buildSettings();
 
-    _navigatorKey.currentState.push(
+    _navigatorKey?.currentState?.push(
       MaterialPageRoute(
         builder: (context) => ControlPanelPage(settings: settings),
       ),

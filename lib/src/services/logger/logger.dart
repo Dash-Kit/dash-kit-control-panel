@@ -28,42 +28,42 @@ class Logger {
   }
 
   /// Log a message at level [Level.verbose].
-  static void v(dynamic message, [dynamic error, StackTrace stackTrace]) {
+  static void v(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (_enabled) {
       _logger.log(logger_dependency.Level.verbose, message, error, stackTrace);
     }
   }
 
   /// Log a message at level [Level.debug].
-  static void d(dynamic message, [dynamic error, StackTrace stackTrace]) {
+  static void d(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (_enabled) {
       _logger.log(logger_dependency.Level.debug, message, error, stackTrace);
     }
   }
 
   /// Log a message at level [Level.info].
-  static void i(dynamic message, [dynamic error, StackTrace stackTrace]) {
+  static void i(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (_enabled) {
       _logger.log(logger_dependency.Level.info, message, error, stackTrace);
     }
   }
 
   /// Log a message at level [Level.warning].
-  static void w(dynamic message, [dynamic error, StackTrace stackTrace]) {
+  static void w(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (_enabled) {
       _logger.log(logger_dependency.Level.warning, message, error, stackTrace);
     }
   }
 
   /// Log a message at level [Level.error].
-  static void e(dynamic message, [dynamic error, StackTrace stackTrace]) {
+  static void e(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (_enabled) {
       _logger.log(logger_dependency.Level.error, message, error, stackTrace);
     }
   }
 
   /// Log a message at level [Level.wtf].
-  static void wtf(dynamic message, [dynamic error, StackTrace stackTrace]) {
+  static void wtf(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (_enabled) {
       _logger.log(logger_dependency.Level.wtf, message, error, stackTrace);
     }
