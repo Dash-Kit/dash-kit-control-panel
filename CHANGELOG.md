@@ -1,3 +1,7 @@
+## [3.0.0-dev.1]
+
+* Added null-safety
+
 ## [1.0.1]
 
 * Upgraded dependencies
