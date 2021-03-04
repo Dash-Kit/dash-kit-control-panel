@@ -17,7 +17,7 @@ class ExampleApp extends StatelessWidget {
       title: 'Debug',
       navigatorKey: navigatorKey,
       home: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
         ),
         child: Center(

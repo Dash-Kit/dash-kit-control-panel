@@ -14,7 +14,7 @@ class DemoMode {
     }
   }
 
-  static T value<T>(T demoValue) {
+  static T? value<T>(T demoValue) {
     if (isEnabled) {
       return demoValue;
     }
@@ -23,22 +23,22 @@ class DemoMode {
   }
 
   static void action(void Function() action) {
-    if (isEnabled && action != null) {
+    if (isEnabled) {
       action();
     }
   }
 
   static StreamSubscription<bool> subscribe({
-    void Function() onEnabled,
-    void Function() onDisabled,
+    required void Function()? onEnabled,
+    required void Function()? onDisabled,
   }) {
     final notify = (isEnabled) {
-      if (isEnabled && onEnabled != null) {
-        onEnabled();
+      if (isEnabled) {
+        onEnabled?.call();
       }
 
-      if (!isEnabled && onDisabled != null) {
-        onDisabled();
+      if (!isEnabled) {
+        onDisabled?.call();
       }
     };
 

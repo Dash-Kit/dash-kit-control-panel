@@ -8,17 +8,17 @@ class AnsiParser {
 
   final bool dark;
 
-  Color foreground;
-  Color background;
-  List<TextSpan> spans;
+  Color? foreground;
+  Color? background;
+  List<TextSpan>? spans;
 
   void parse(String s) {
     spans = [];
     var state = TEXT;
-    StringBuffer buffer;
+    StringBuffer? buffer;
     final text = StringBuffer();
     var code = 0;
-    List<int> codes;
+    List<int>? codes;
 
     for (var i = 0; i < s.length; i++) {
       final c = s[i];
@@ -36,7 +36,7 @@ class AnsiParser {
           break;
 
         case BRACKET:
-          buffer.write(c);
+          buffer?.write(c);
           if (c == '[') {
             state = CODE;
           } else {
@@ -46,24 +46,24 @@ class AnsiParser {
           break;
 
         case CODE:
-          buffer.write(c);
+          buffer?.write(c);
           final codeUnit = c.codeUnitAt(0);
           if (codeUnit >= 48 && codeUnit <= 57) {
             code = code * 10 + codeUnit - 48;
             continue;
           } else if (c == ';') {
-            codes.add(code);
+            codes?.add(code);
             code = 0;
             continue;
           } else {
             if (text.isNotEmpty) {
-              spans.add(createSpan(text.toString()));
+              spans?.add(createSpan(text.toString()));
               text.clear();
             }
             state = TEXT;
             if (c == 'm') {
-              codes.add(code);
-              handleCodes(codes);
+              codes?.add(code);
+              handleCodes(codes ?? []);
             } else {
               text.write(buffer);
             }
@@ -73,7 +73,7 @@ class AnsiParser {
       }
     }
 
-    spans.add(createSpan(text.toString()));
+    spans?.add(createSpan(text.toString()));
   }
 
   void handleCodes(List<int> codes) {
@@ -105,13 +105,13 @@ class AnsiParser {
       case 0:
         return foreground ? Colors.black : Colors.transparent;
       case 12:
-        return dark ? Colors.lightBlue[300] : Colors.indigo[700];
+        return dark ? Colors.lightBlue[300]! : Colors.indigo[700]!;
       case 208:
-        return dark ? Colors.orange[300] : Colors.orange[700];
+        return dark ? Colors.orange[300]! : Colors.orange[700]!;
       case 196:
-        return dark ? Colors.red[300] : Colors.red[700];
+        return dark ? Colors.red[300]! : Colors.red[700]!;
       case 199:
-        return dark ? Colors.pink[300] : Colors.pink[700];
+        return dark ? Colors.pink[300]! : Colors.pink[700]!;
       default:
         return foreground ? Colors.black : Colors.transparent;
     }

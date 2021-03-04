@@ -1,21 +1,20 @@
 name: dash_kit_control_panel
 description: Revolutionary tool for configuration Flutter apps
-version: 1.0.1
+version: 3.0.0-dev.1
 homepage: https://github.com/Dash-Kit/dash-kit-control-panel
 
 environment:
-  sdk: ">=2.3.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  alice_lightweight: ^3.0.0-dev.1
   flutter:
     sdk: flutter
 
-  shared_preferences: ^0.5.12
-  package_info: ^0.4.3
-  logger: ^0.9.4
-  device_preview: ^0.4.8
-  rxdart: ^0.24.1
-  alice_lightweight: ^1.0.0
+  logger: ^1.0.0-nullsafety.0
+  package_info: ^2.0.0
+  rxdart: ^0.26.0
+  shared_preferences: ^2.0.3
 
 dev_dependencies:
   flutter_test:

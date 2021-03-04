@@ -6,13 +6,13 @@ import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
 typedef OnDemoModeChanged = void Function(bool);
 
 class DemoSettingProps {
-  DemoSettingProps({this.onDemoModeChanged});
+  DemoSettingProps({required this.onDemoModeChanged});
 
   final OnDemoModeChanged onDemoModeChanged;
 }
 
 class DemoSetting extends StatefulWidget implements ControlPanelSetting {
-  const DemoSetting(this.props, {Key key}) : super(key: key);
+  const DemoSetting(this.props, {Key? key}) : super(key: key);
 
   final DemoSettingProps props;
 
@@ -27,6 +27,8 @@ class DemoSetting extends StatefulWidget implements ControlPanelSetting {
 }
 
 class _DemoSettingState extends State<DemoSetting> {
+  _DemoSettingState() : isEnabled = DemoMode.isEnabled;
+
   bool isEnabled;
 
   @override
@@ -72,8 +74,6 @@ class _DemoSettingState extends State<DemoSetting> {
 
     DemoMode.isEnabled = value;
 
-    if (widget.props.onDemoModeChanged != null) {
-      widget.props.onDemoModeChanged(value);
-    }
+    widget.props.onDemoModeChanged(value);
   }
 }

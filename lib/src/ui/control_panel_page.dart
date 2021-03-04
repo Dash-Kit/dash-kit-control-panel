@@ -4,7 +4,7 @@ import 'package:dash_kit_control_panel/src/ui/components/control_panel_title.dar
 import 'package:dash_kit_control_panel/src/ui/resources/r.dart';
 
 class ControlPanelPage extends StatelessWidget {
-  const ControlPanelPage({Key key, this.settings}) : super(key: key);
+  const ControlPanelPage({Key? key, required this.settings}) : super(key: key);
 
   final List<ControlPanelSetting> settings;
 
@@ -34,7 +34,7 @@ class ControlPanelPage extends StatelessWidget {
   Widget _buildSettings() {
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: 12),
-      children: settings ?? [],
+      children: settings,
     );
   }
 }

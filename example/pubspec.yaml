@@ -7,17 +7,18 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
-  dio: ^3.0.3
-
   dash_kit_control_panel:
     path: ../
+  dio: ^4.0.0-beta4
+  flutter:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+  analyzer: ^0.40.0
 
 flutter:
   uses-material-design: true

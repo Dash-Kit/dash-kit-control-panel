@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ControlPanelTitle extends StatelessWidget {
-  const ControlPanelTitle({Key key, @required this.title}) : super(key: key);
+  const ControlPanelTitle({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -9,7 +9,7 @@ class ControlPanelTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.green,
         fontSize: 18,
         fontWeight: FontWeight.w500,
