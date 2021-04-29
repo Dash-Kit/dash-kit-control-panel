@@ -7,7 +7,7 @@ packages:
       name: alice_lightweight
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0-dev.1"
+    version: "3.0.0-dev.2"
   async:
     dependency: transitive
     description:
@@ -56,7 +56,7 @@ packages:
       name: dio
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0-beta4"
+    version: "4.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -99,7 +99,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.0"
+    version: "0.13.2"
   http_parser:
     dependency: transitive
     description:
@@ -120,7 +120,7 @@ packages:
       name: logger
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0-nullsafety.0"
+    version: "1.0.0"
   matcher:
     dependency: transitive
     description:
@@ -232,7 +232,7 @@ packages:
       name: share
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   shared_preferences:
     dependency: "direct main"
     description:
