@@ -120,11 +120,13 @@ class _ProxySettingState extends State<ProxySetting> {
         height: 30,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 500),
-          child: RaisedButton(
-            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-            color:
-                isProxyEnabled ? Colors.redAccent : Colors.green.withAlpha(245),
-            disabledColor: Colors.grey.shade700,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+              primary: isProxyEnabled
+                  ? Colors.redAccent
+                  : Colors.green.withAlpha(245),
+            ),
             child: FittedBox(
               child: Text(
                 isProxyEnabled ? 'Disable' : 'Enable',

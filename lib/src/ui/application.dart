@@ -1,3 +1,5 @@
+import 'package:dash_kit_control_panel/src/services/device_preview_mode.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
 
 class Application extends StatelessWidget {
@@ -7,13 +9,18 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return child;
+    return StreamBuilder<bool>(
+      stream: DevicePreviewMode.onModeChanged,
+      builder: (context, snapShoot) => DevicePreview(
+          enabled: snapShoot.hasData && snapShoot.data!,
+          builder: (context) => child),
+    );
   }
 
   static Widget appBuilder(
     BuildContext context,
     Widget widget,
   ) {
-    return widget;
+    return DevicePreview.appBuilder(context, widget);
   }
 }

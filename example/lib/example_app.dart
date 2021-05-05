@@ -26,7 +26,7 @@ class ExampleApp extends StatelessWidget {
             children: <Widget>[
               const ControlPanelGate(child: Text('Debug mode')),
               const SizedBox(height: 24),
-              RaisedButton(
+              ElevatedButton(
                 child: const Text('Send Request'),
                 onPressed: sendTestRequest,
               )

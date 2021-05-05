@@ -59,11 +59,13 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
       if (adapter is DefaultHttpClientAdapter) {
         adapter.onHttpClientCreate = (HttpClient client) {
           client.findProxy = (uri) {
-            return _proxyIp != null ? 'PROXY $_proxyIp:8888' : 'DIRECT';
+            return _proxyIp?.isNotEmpty == true
+                ? 'PROXY $_proxyIp:8888'
+                : 'DIRECT';
           };
 
           client.badCertificateCallback =
-              (cert, host, port) => _proxyIp != null;
+              (cert, host, port) => _proxyIp?.isNotEmpty == true;
         };
       }
     }

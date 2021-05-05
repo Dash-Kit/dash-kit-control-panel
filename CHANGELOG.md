@@ -1,3 +1,7 @@
+## [3.0.0-dev.3]
+
+* Fixed issue with opening the panel and returned back device preview module
+
 ## [3.0.0-dev.2]
 
 * Upgraded dependencies

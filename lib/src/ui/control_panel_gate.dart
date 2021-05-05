@@ -23,10 +23,6 @@ class ControlPanelGate extends StatelessWidget {
   }
 
   void _onDoubleTap() {
-    if (_lastDoubleTapEvent == null) {
-      return;
-    }
-
     final now = DateTime.now();
     final diff = _lastDoubleTapEvent != null
         ? now.millisecondsSinceEpoch -

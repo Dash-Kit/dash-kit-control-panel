@@ -75,10 +75,12 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
       child: Container(
         width: 70,
         height: 30,
-        child: RaisedButton(
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-          color: hasToken ? Colors.green.withAlpha(245) : Colors.grey.shade700,
-          disabledColor: Colors.grey.shade700,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            primary:
+                hasToken ? Colors.green.withAlpha(245) : Colors.grey.shade700,
+          ),
           child: const Text(
             'Copy',
             style: TextStyle(
