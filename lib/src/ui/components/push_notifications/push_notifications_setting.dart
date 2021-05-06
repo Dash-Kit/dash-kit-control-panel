@@ -8,7 +8,7 @@ class PushNotificationsSettingProps {
     required this.getToken,
   });
 
-  final Future<String> getToken;
+  final Future<String?> getToken;
 }
 
 class PushNotificationsSetting extends StatefulWidget
@@ -31,16 +31,16 @@ class PushNotificationsSetting extends StatefulWidget
 class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
   final tokenController = TextEditingController();
 
-  String? token;
+  String token = '';
 
-  bool get hasToken => token != null && token!.isNotEmpty;
+  bool get hasToken => token.isNotEmpty;
 
   @override
   void initState() {
     final getToken = widget.props.getToken;
     getToken.then((pushToken) => setState(() {
-          tokenController.text = pushToken;
-          token = pushToken;
+          tokenController.text = pushToken ?? '';
+          token = tokenController.text;
         }));
 
     super.initState();

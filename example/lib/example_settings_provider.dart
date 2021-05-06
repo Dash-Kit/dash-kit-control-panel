@@ -19,7 +19,7 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
   final Alice alice;
   final List<Dio> dios;
 
-  String _proxyIp;
+  String _proxyIp = '';
 
   @override
   Future<List<ControlPanelSetting>> buildSettings() async {
@@ -44,6 +44,7 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
     return [
       VersionSetting(),
       DemoSetting(demoProps),
+      const DevicePreviewSetting(),
       ProxySetting(proxyProps),
       PushNotificationsSetting(pushProps),
       NetworkSetting(networkProps),

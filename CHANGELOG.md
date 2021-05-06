@@ -1,3 +1,7 @@
+## [3.0.0-dev.4]
+
+* Fixed an issue with push token type
+
 ## [3.0.0-dev.3]
 
 * Fixed issue with opening the panel and returned back device preview module
