@@ -45,7 +45,7 @@ const ControlPanelGate(
 
 It is possible to setup Control Panel with regards to your own needs. It requires to prepare ```SettingsProvider``` class that extends ```ControlPanelSettingsClass``` and in ```buildSettings()``` methods return all widgets that will be used via panel. All these widgets should implement ```ControlPanelSetting```.
 
-In our case, we preffer using [dio Http client](https://pub.dev/packages/dio) with [alice_lightweight](https://pub.dev/packages/alice_lightweight) to handle network requests, cause they are well compatible and it's possible to add alice interseptor to dio (callback that allows allice following up requests from dio). But as was already mentioned, you may add any custom functionalyty you need no matter what pluggins you use.  
+In our case, we preffer using [dio Http client](https://pub.dev/packages/dio) with [alice_lightweight](https://pub.dev/packages/alice_lightweight) to handle network requests, cause they are well compatible and it's possible to add alice interseptor to dio (callback that allows allice following up requests from dio). But as was already mentioned, you may add any custom functionality you need no matter what pluggins you use.  
 
 ```dart
 class ExampleSettingsProvider extends ControlPanelSettingsProvider {
@@ -134,7 +134,7 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
 
 In ```main.dart``` class we adding alice interceptor to dio and setting dio timeout. And finally we initialize Control Panel with ```SettingsProvider```.
 
-Please note that it also needs to wrap MaterialApp with ```Application``` widget to activete Device Preview mode for your application.
+Please note that it also needs to wrap MaterialApp with ```Application``` widget to activate Device Preview mode for your application.
 
 ```dart
 final alice = Alice();
