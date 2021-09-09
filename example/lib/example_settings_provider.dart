@@ -1,13 +1,15 @@
 import 'dart:io';
 
 import 'package:alice_lightweight/alice.dart';
+import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
-import 'package:meta/meta.dart';
 
 class ExampleSettingsProvider extends ControlPanelSettingsProvider {
-  ExampleSettingsProvider({@required this.alice, @required this.dios}) {
+  ExampleSettingsProvider({
+    required this.alice,
+    required this.dios,
+  }) {
     _configureProxy(dios);
     _initLogger();
 
@@ -60,13 +62,13 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
       if (adapter is DefaultHttpClientAdapter) {
         adapter.onHttpClientCreate = (HttpClient client) {
           client.findProxy = (uri) {
-            return _proxyIp?.isNotEmpty == true
+            return _proxyIp.isNotEmpty == true
                 ? 'PROXY $_proxyIp:8888'
                 : 'DIRECT';
           };
 
           client.badCertificateCallback =
-              (cert, host, port) => _proxyIp?.isNotEmpty == true;
+              (cert, host, port) => _proxyIp.isNotEmpty == true;
         };
       }
     }

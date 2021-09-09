@@ -1,0 +1,6 @@
+package org.dashkit.controlpanel.example
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
