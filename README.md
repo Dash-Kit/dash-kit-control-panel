@@ -12,16 +12,16 @@ When you’re developing an application it is often really convenient to have ac
 
 For all these development requirements we have made special Control Panel. This is a screen that is accessible from anywhere in the app by doing several tap gestures. There's also an opportunity of setting an access to Control Panel only from specific App Environment.
 
-<img src="readme_images/1.png" alt="drawing" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp;
-<img src="readme_images/2.png" alt="drawing" width="250"/> <br />
+<img src="https://github.com/Dash-Kit/dash-kit-control-panel/blob/master/readme_images/1.png?raw=true" alt="drawing" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/Dash-Kit/dash-kit-control-panel/blob/master/readme_images/2.png?raw=true" alt="drawing" width="250"/> <br />
 
-<img src="readme_images/3.png" alt="drawing" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp;
-<img src="readme_images/4.png" alt="drawing" width="250"/> <br />
+<img src="https://github.com/Dash-Kit/dash-kit-control-panel/blob/master/readme_images/3.png?raw=true" alt="drawing" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/Dash-Kit/dash-kit-control-panel/blob/master/readme_images/4.png?raw=true" alt="drawing" width="250"/> <br />
 
-<img src="readme_images/5.png" alt="drawing" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp;
-<img src="readme_images/6.png" alt="drawing" width="250"/> <br />
+<img src="https://github.com/Dash-Kit/dash-kit-control-panel/blob/master/readme_images/5.png?raw=true" alt="drawing" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/Dash-Kit/dash-kit-control-panel/blob/master/readme_images/6.png?raw=true" alt="drawing" width="250"/> <br />
 
-<img src="readme_images/7.png" alt="drawing" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/Dash-Kit/dash-kit-control-panel/blob/master/readme_images/7.png?raw=true" alt="drawing" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp;
 
 ## Getting Started
 
