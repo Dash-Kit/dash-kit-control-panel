@@ -1,3 +1,7 @@
+## [3.0.0]
+
+* Release 3.0.0
+
 ## [3.0.0-dev.6]
 
 * Updated Readme file and example project
