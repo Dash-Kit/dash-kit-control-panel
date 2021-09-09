@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 
 class LicenseSetting extends StatefulWidget implements ControlPanelSetting {
-  const LicenseSetting({Key key}) : super(key: key);
+  const LicenseSetting({Key? key}) : super(key: key);
 
   @override
   Setting get setting => Setting(
@@ -22,8 +22,8 @@ class _LicenseSettingState extends State<LicenseSetting> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-      child: RaisedButton(
-        color: Colors.green.withAlpha(240),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: Colors.green.withAlpha(240)),
         child: FittedBox(
           child: Text(
             'Print Licenses In Console',

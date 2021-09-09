@@ -6,16 +6,16 @@ import 'package:dash_kit_control_panel/src/ui/resources/r.dart';
 
 class SettingGroup extends StatelessWidget {
   const SettingGroup({
-    Key key,
-    this.setting,
-    this.child,
+    Key? key,
+    required this.setting,
+    required this.child,
     this.backgroundColor,
     this.onTap,
   }) : super(key: key);
 
   final Widget child;
-  final Color backgroundColor;
-  final VoidCallback onTap;
+  final Color? backgroundColor;
+  final VoidCallback? onTap;
   final Setting setting;
 
   @override
@@ -34,7 +34,7 @@ class SettingGroup extends StatelessWidget {
     return Stack(
       children: <Widget>[
         _buildSettingContent(),
-        if (setting?.title != null) _buildTitle(),
+        if (setting.title.isNotEmpty) _buildTitle(),
       ],
     );
   }
@@ -44,7 +44,7 @@ class SettingGroup extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 22),
-        padding: EdgeInsets.symmetric(horizontal: 4, vertical: sqrt1_2),
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: sqrt1_2),
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 40, 40, 40),
           border: Border.all(color: R.color.settingGroupBorder),
@@ -52,7 +52,7 @@ class SettingGroup extends StatelessWidget {
         ),
         child: Text(
           setting.title,
-          style: TextStyle(fontSize: 11, color: Colors.white54),
+          style: const TextStyle(fontSize: 11, color: Colors.white54),
         ),
       ),
     );

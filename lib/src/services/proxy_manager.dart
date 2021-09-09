@@ -15,16 +15,16 @@ class ProxyManager {
 
   Future<void> setProxyMode(bool mode) async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.setBool(_isProxyEnabled, mode);
+    await prefs.setBool(_isProxyEnabled, mode);
   }
 
   Future<String> getProxyIpAddress() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_proxyIpAddress);
+    return prefs.getString(_proxyIpAddress) ?? '';
   }
 
   Future<void> setProxyIpAddress(String ipAddress) async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.setString(_proxyIpAddress, ipAddress);
+    await prefs.setString(_proxyIpAddress, ipAddress);
   }
 }

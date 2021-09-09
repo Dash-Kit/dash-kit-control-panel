@@ -5,7 +5,7 @@ import 'package:logger/logger.dart' as logger_dependency;
 class ConsoleOutput extends logger_dependency.LogOutput {
   final ListQueue<logger_dependency.OutputEvent> outputEventBuffer =
       ListQueue();
-  Function(logger_dependency.OutputEvent event) outputCallback;
+  Function(logger_dependency.OutputEvent event)? outputCallback;
   int bufferSize = 20;
 
   @override
@@ -17,7 +17,7 @@ class ConsoleOutput extends logger_dependency.LogOutput {
     }
     outputEventBuffer.add(event);
     if (outputCallback != null) {
-      outputCallback(event);
+      outputCallback?.call(event);
     }
   }
 }

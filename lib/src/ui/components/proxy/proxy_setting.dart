@@ -9,10 +9,10 @@ typedef OnProxyModeChanged = void Function(bool);
 
 class ProxySettingProps {
   ProxySettingProps({
-    this.isEnabled,
-    this.onProxyModeChanged,
-    this.onProxyIpChanged,
-    this.initialProxyIpAddress,
+    required this.isEnabled,
+    required this.onProxyModeChanged,
+    required this.onProxyIpChanged,
+    required this.initialProxyIpAddress,
   });
 
   final OnProxyIpChanged onProxyIpChanged;
@@ -47,14 +47,12 @@ class ProxySettingProps {
     final isProxyEnabled = await ProxyManager.shared.isProxyEnabled();
     final proxyIP = await ProxyManager.shared.getProxyIpAddress();
 
-    if (onProxyChanged != null) {
-      onProxyChanged(isProxyEnabled ? proxyIP : null);
-    }
+    onProxyChanged(isProxyEnabled ? proxyIP : '');
   }
 }
 
 class ProxySetting extends StatefulWidget implements ControlPanelSetting {
-  const ProxySetting(this.props, {Key key}) : super(key: key);
+  const ProxySetting(this.props, {Key? key}) : super(key: key);
 
   final ProxySettingProps props;
 
@@ -73,8 +71,8 @@ class _ProxySettingState extends State<ProxySetting> {
   final proxyIpFieldFocusNode = FocusNode();
   final proxyIpController = TextEditingController();
 
-  bool isProxyEnabled;
-  String proxyIP;
+  bool isProxyEnabled = false;
+  String proxyIP = '';
 
   @override
   void initState() {
@@ -122,22 +120,24 @@ class _ProxySettingState extends State<ProxySetting> {
         height: 30,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 500),
-          child: RaisedButton(
-            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-            color:
-                isProxyEnabled ? Colors.redAccent : Colors.green.withAlpha(245),
-            disabledColor: Colors.grey.shade700,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+              primary: isProxyEnabled
+                  ? Colors.redAccent
+                  : Colors.green.withAlpha(245),
+            ),
             child: FittedBox(
               child: Text(
                 isProxyEnabled ? 'Disable' : 'Enable',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 13,
                   color: Colors.white,
                   letterSpacing: 0.2,
                 ),
               ),
             ),
-            onPressed: proxyIP == null ? null : changeProxyMode,
+            onPressed: proxyIP.isEmpty ? null : changeProxyMode,
           ),
         ),
       ),
@@ -148,13 +148,13 @@ class _ProxySettingState extends State<ProxySetting> {
     return TextFormField(
       focusNode: proxyIpFieldFocusNode,
       controller: proxyIpController,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: 'Proxy IP address:',
         labelStyle: TextStyle(
           color: Colors.white70,
           fontSize: 14,
         ),
-        contentPadding: const EdgeInsets.only(bottom: 4, top: 4),
+        contentPadding: EdgeInsets.only(bottom: 4, top: 4),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
@@ -164,9 +164,9 @@ class _ProxySettingState extends State<ProxySetting> {
         fontSize: 15,
       ),
       keyboardType: TextInputType.text,
-      inputFormatters: [WhitelistingTextInputFormatter(RegExp('[0-9\.]'))],
+      inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9\.]'))],
       validator: validateIpAdress,
-      onEditingComplete: () => proxyForm.currentState.validate(),
+      onEditingComplete: () => proxyForm.currentState?.validate(),
       onFieldSubmitted: (value) {
         submitNewProxyIpAddress(value);
         FocusScope.of(context).requestFocus(FocusNode());
@@ -185,19 +185,19 @@ class _ProxySettingState extends State<ProxySetting> {
   }
 
   void submitNewProxyIpAddress(String ipAddress) {
-    if (proxyForm.currentState.validate()) {
+    if (proxyForm.currentState?.validate() ?? false) {
       final proxyIP = ipAddress.isEmpty ? null : ipAddress;
 
       setState(() {
-        this.proxyIP = proxyIP;
+        this.proxyIP = proxyIP ?? '';
       });
 
-      widget.props.onProxyIpChanged(proxyIP);
+      widget.props.onProxyIpChanged(this.proxyIP);
     }
   }
 
-  String validateIpAdress(String value) {
-    if (value.isEmpty) {
+  String? validateIpAdress(String? value) {
+    if (value == null || value.isEmpty) {
       return null;
     }
 
@@ -210,7 +210,7 @@ class _ProxySettingState extends State<ProxySetting> {
 
     final isNumberComponentsCorrect = components.fold(true, (prev, curr) {
       final int number = int.parse(curr);
-      return prev && number >= 0 && number < 256;
+      return number >= 0 && number < 256;
     });
 
     if (!isNumberComponentsCorrect) {

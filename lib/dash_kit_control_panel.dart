@@ -9,6 +9,7 @@ export 'src/panel/control_panel_settings_provider.dart';
 // MARK: Services
 
 export 'src/services/demo_mode.dart';
+export 'src/services/device_preview_mode.dart';
 export 'src/services/logger/logger.dart';
 
 // MARK: Settings

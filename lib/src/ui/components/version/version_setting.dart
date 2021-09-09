@@ -58,7 +58,7 @@ class _VersionSettingState extends State<VersionSetting> {
         return Column(
           children: <Widget>[
             _buildInfoField(e.key, e.value),
-            if (e.key != fields.entries.last?.key) _buildDivider(),
+            if (e.key != fields.entries.last.key) _buildDivider(),
           ],
         );
       }).toList(),
@@ -71,7 +71,7 @@ class _VersionSettingState extends State<VersionSetting> {
       child: Row(
         children: <Widget>[
           Text(
-            title ?? '',
+            title,
             style: TextStyle(
               color: Colors.white.withAlpha(240),
               fontWeight: FontWeight.w400,
@@ -80,7 +80,7 @@ class _VersionSettingState extends State<VersionSetting> {
           ),
           const Spacer(),
           Text(
-            value ?? '',
+            value,
             style: TextStyle(
               color: Colors.white.withAlpha(200),
               fontSize: 14,
@@ -101,8 +101,8 @@ class _VersionSettingState extends State<VersionSetting> {
 
   void _requestPackageInfo() {
     PackageInfo.fromPlatform().then((packageInfo) {
-      final version = packageInfo.version ?? '';
-      final buildNumber = packageInfo.buildNumber ?? '';
+      final version = packageInfo.version;
+      final buildNumber = packageInfo.buildNumber;
       final appVersion = version.isNotEmpty && buildNumber.isNotEmpty
           ? '$version ($buildNumber)'
           : '(not defined)';
@@ -110,8 +110,8 @@ class _VersionSettingState extends State<VersionSetting> {
       setState(() {
         fields = {
           'App Version:': appVersion,
-          'App Name:': packageInfo.appName ?? '',
-          'Package Name:': packageInfo.packageName ?? '',
+          'App Name:': packageInfo.appName,
+          'Package Name:': packageInfo.packageName,
         };
       });
     }).catchError((error) {

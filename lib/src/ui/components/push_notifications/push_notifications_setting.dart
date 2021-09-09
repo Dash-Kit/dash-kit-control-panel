@@ -5,15 +5,15 @@ import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
 
 class PushNotificationsSettingProps {
   PushNotificationsSettingProps({
-    this.getToken,
+    required this.getToken,
   });
 
-  final Future<String> getToken;
+  final Future<String?> getToken;
 }
 
 class PushNotificationsSetting extends StatefulWidget
     implements ControlPanelSetting {
-  const PushNotificationsSetting(this.props, {Key key}) : super(key: key);
+  const PushNotificationsSetting(this.props, {Key? key}) : super(key: key);
 
   final PushNotificationsSettingProps props;
 
@@ -31,18 +31,17 @@ class PushNotificationsSetting extends StatefulWidget
 class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
   final tokenController = TextEditingController();
 
-  String token;
-  bool get hasToken => token != null && token.isNotEmpty;
+  String token = '';
+
+  bool get hasToken => token.isNotEmpty;
 
   @override
   void initState() {
     final getToken = widget.props.getToken;
-    if (getToken != null) {
-      getToken.then((pushToken) => setState(() {
-            tokenController.text = pushToken;
-            return token = pushToken;
-          }));
-    }
+    getToken.then((pushToken) => setState(() {
+          tokenController.text = pushToken ?? '';
+          token = tokenController.text;
+        }));
 
     super.initState();
   }
@@ -76,11 +75,13 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
       child: Container(
         width: 70,
         height: 30,
-        child: RaisedButton(
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-          color: hasToken ? Colors.green.withAlpha(245) : Colors.grey.shade700,
-          disabledColor: Colors.grey.shade700,
-          child: Text(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            primary:
+                hasToken ? Colors.green.withAlpha(245) : Colors.grey.shade700,
+          ),
+          child: const Text(
             'Copy',
             style: TextStyle(
               fontSize: 13,
@@ -99,12 +100,12 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
       controller: tokenController,
       decoration: InputDecoration(
         labelText: hasToken ? 'Device token:' : 'No device token',
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
           color: Colors.white70,
           fontSize: 14,
         ),
         contentPadding: const EdgeInsets.only(bottom: 4, top: 4),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
       ),
@@ -125,6 +126,6 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
       content: Text('Device token copied to the clipboard'),
       duration: Duration(seconds: 1),
     );
-    Scaffold.of(context).showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

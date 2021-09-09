@@ -174,7 +174,7 @@ class _LogConsoleState extends State<LogConsole> {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Text(
+          const Text(
             'Log Console',
             style: TextStyle(
               fontSize: 20,
@@ -183,7 +183,7 @@ class _LogConsoleState extends State<LogConsole> {
           ),
           const Spacer(),
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {
               setState(() {
                 _logFontSize++;
@@ -191,7 +191,7 @@ class _LogConsoleState extends State<LogConsole> {
             },
           ),
           IconButton(
-            icon: Icon(Icons.remove),
+            icon: const Icon(Icons.remove),
             onPressed: () {
               setState(() {
                 _logFontSize--;
@@ -200,7 +200,7 @@ class _LogConsoleState extends State<LogConsole> {
           ),
           if (widget.showCloseButton)
             IconButton(
-              icon: Icon(Icons.close),
+              icon: const Icon(Icons.close),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -228,7 +228,7 @@ class _LogConsoleState extends State<LogConsole> {
             ),
           ),
           const SizedBox(width: 20),
-          DropdownButton(
+          DropdownButton<Level>(
             value: _filterLevel,
             items: const [
               DropdownMenuItem(
@@ -257,7 +257,7 @@ class _LogConsoleState extends State<LogConsole> {
               )
             ],
             onChanged: (value) {
-              _filterLevel = value;
+              _filterLevel = value ?? Level.verbose;
               _refreshFilter();
             },
           )
@@ -303,7 +303,7 @@ class _LogConsoleState extends State<LogConsole> {
 }
 
 class LogBar extends StatelessWidget {
-  const LogBar({this.dark, this.child});
+  const LogBar({required this.dark, required this.child});
 
   final bool dark;
   final Widget child;
@@ -317,7 +317,7 @@ class LogBar extends StatelessWidget {
           boxShadow: [
             if (!dark)
               BoxShadow(
-                color: Colors.grey[400],
+                color: Colors.grey[400]!,
                 blurRadius: 3,
               ),
           ],
