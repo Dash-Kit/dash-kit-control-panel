@@ -8,16 +8,16 @@ class DevicePreviewSetting extends StatefulWidget
 
   @override
   Setting get setting => Setting(
-    id: runtimeType.toString(),
-    title: 'Device Preview',
-  );
+        id: runtimeType.toString(),
+        title: 'Device Preview',
+      );
 
   @override
   _DevicePreviewSettingState createState() => _DevicePreviewSettingState();
 }
 
 class _DevicePreviewSettingState extends State<DevicePreviewSetting> {
-  _DevicePreviewSettingState(): isEnabled = DevicePreviewMode.isEnabled;
+  _DevicePreviewSettingState() : isEnabled = DevicePreviewMode.isEnabled;
 
   bool isEnabled;
 
@@ -65,5 +65,4 @@ class _DevicePreviewSettingState extends State<DevicePreviewSetting> {
 
     DevicePreviewMode.isEnabled = value;
   }
-
 }
