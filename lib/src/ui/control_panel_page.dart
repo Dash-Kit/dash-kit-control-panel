@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 import 'package:dash_kit_control_panel/src/ui/components/control_panel_title.dart';
 import 'package:dash_kit_control_panel/src/ui/resources/r.dart';
+import 'package:flutter/material.dart';
 
 class ControlPanelPage extends StatelessWidget {
   const ControlPanelPage({Key? key, required this.settings}) : super(key: key);

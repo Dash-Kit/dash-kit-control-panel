@@ -1,8 +1,8 @@
 import 'dart:developer';
 
+import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 
 class LicenseSetting extends StatefulWidget implements ControlPanelSetting {
   const LicenseSetting({Key? key}) : super(key: key);

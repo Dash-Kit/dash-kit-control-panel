@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
-import 'package:dash_kit_control_panel/src/services/device_preview_mode.dart';
+import 'package:flutter/material.dart';
 
 class DevicePreviewSetting extends StatefulWidget
     implements ControlPanelSetting {

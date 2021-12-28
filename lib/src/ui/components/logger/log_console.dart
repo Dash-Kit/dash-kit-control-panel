@@ -1,8 +1,8 @@
 import 'dart:collection';
 
-import 'package:flutter/material.dart';
 import 'package:dash_kit_control_panel/src/services/logger/logger.dart';
 import 'package:dash_kit_control_panel/src/ui/components/logger/ansi_parser.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 class RenderedEvent {
@@ -104,11 +104,15 @@ class _LogConsoleState extends State<LogConsole> {
       theme: widget.dark
           ? ThemeData(
               brightness: Brightness.dark,
-              accentColor: Colors.blueGrey,
+              colorScheme: Theme.of(context)
+                  .colorScheme
+                  .copyWith(secondary: Colors.blueGrey),
             )
           : ThemeData(
               brightness: Brightness.light,
-              accentColor: Colors.lightBlueAccent,
+              colorScheme: Theme.of(context)
+                  .colorScheme
+                  .copyWith(secondary: Colors.lightBlueAccent),
             ),
       home: Scaffold(
         body: SafeArea(
