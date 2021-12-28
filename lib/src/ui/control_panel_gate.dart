@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dash_kit_control_panel/src/panel/control_panel.dart';
+import 'package:flutter/material.dart';
 
 class ControlPanelGate extends StatelessWidget {
   const ControlPanelGate({

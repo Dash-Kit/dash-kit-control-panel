@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dash_kit_control_panel/src/ui/components/logger/log_console.dart';
+import 'package:flutter/material.dart';
 
 class LogConsoleModal extends ModalRoute<void> {
   @override

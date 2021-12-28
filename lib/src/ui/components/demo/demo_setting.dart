@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 import 'package:dash_kit_control_panel/src/services/demo_mode.dart';
 import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
+import 'package:flutter/material.dart';
 
 typedef OnDemoModeChanged = void Function(bool);
 

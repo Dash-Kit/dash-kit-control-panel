@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
 import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
 import 'package:dash_kit_control_panel/src/ui/resources/r.dart';
+import 'package:flutter/material.dart';
 
 class SettingGroup extends StatelessWidget {
   const SettingGroup({
