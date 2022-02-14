@@ -1,3 +1,7 @@
+## [3.0.3]
+
+* Updated alice_lightweight for using queryParameters in curl
+
 ## [3.0.2]
 
 * Updated dependencies
