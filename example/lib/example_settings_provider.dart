@@ -69,6 +69,8 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
 
           client.badCertificateCallback =
               (cert, host, port) => _proxyIp.isNotEmpty == true;
+
+          return null;
         };
       }
     }
