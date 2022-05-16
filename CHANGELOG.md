@@ -1,3 +1,7 @@
+## [3.1.0-dev.1]
+
+* Flutter 3.0 support
+
 ## [3.0.4]
 
 * Updated alice_lightweight null check
