@@ -8,7 +8,6 @@ environment:
 
 dependencies:
   alice_lightweight: ^3.0.3
-  device_preview: ^1.0.0
   flutter:
     sdk: flutter
   logger: ^1.1.0
