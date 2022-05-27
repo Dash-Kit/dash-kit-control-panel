@@ -1,3 +1,7 @@
+## [3.1.0]
+
+* Returned back device_preview
+
 ## [3.1.0-dev.2]
 
 * Fixed Android build issues
