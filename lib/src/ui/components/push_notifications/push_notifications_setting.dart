@@ -78,7 +78,7 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-            primary:
+            backgroundColor:
                 hasToken ? Colors.green.withAlpha(245) : Colors.grey.shade700,
           ),
           child: const Text(

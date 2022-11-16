@@ -21,7 +21,9 @@ class NetworkSetting extends StatelessWidget implements ControlPanelSetting {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: Colors.green.withAlpha(240)),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.green.withAlpha(240),
+        ),
         child: FittedBox(
           child: Text(
             'Show network activity',

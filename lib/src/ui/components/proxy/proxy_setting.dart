@@ -123,7 +123,7 @@ class _ProxySettingState extends State<ProxySetting> {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-              primary: isProxyEnabled
+              backgroundColor: isProxyEnabled
                   ? Colors.redAccent
                   : Colors.green.withAlpha(245),
             ),
