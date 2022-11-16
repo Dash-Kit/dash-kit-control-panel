@@ -1,18 +1,18 @@
 name: dash_kit_control_panel
 description: Control panel with debugging features for convenient app development.
-version: 3.1.0
+version: 3.2.0
 homepage: https://github.com/Dash-Kit/dash-kit-control-panel
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
-  alice_lightweight: ^3.1.0
+  alice_lightweight: ^3.2.0
   device_preview: ^1.1.0
   flutter:
     sdk: flutter
   logger: ^1.1.0
-  package_info_plus: ^1.4.2
-  rxdart: ^0.27.3
+  package_info_plus: ^3.0.2
+  rxdart: ^0.27.7
   shared_preferences: ^2.0.15
 
