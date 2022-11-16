@@ -7,7 +7,7 @@ environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
-  alice_lightweight: ^3.1.0
+  alice_lightweight: ^3.2.0
   device_preview: ^1.1.0
   flutter:
     sdk: flutter
