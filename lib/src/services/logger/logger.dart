@@ -21,6 +21,7 @@ class Logger {
   }
 
   void init({
+    int methodCount = 2,
     int bufferSize = 20,
     int lineLength = 120,
     bool printTime = true,
@@ -38,6 +39,7 @@ class Logger {
     _logger = logger_dependency.Logger(
       output: consoleOutput,
       printer: logger_dependency.PrettyPrinter(
+        methodCount: methodCount,
         printTime: printTime,
         colors: colors,
         printEmojis: printEmojis,
