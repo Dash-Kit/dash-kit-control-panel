@@ -77,8 +77,7 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
   }
 
   void _initLogger() {
-    final logger = Logger.instance;
-    logger.init(bufferSize: 25);
+    final logger = Logger.init(bufferSize: 25);
 
     logger.v('Verbose log');
     logger.d('Debug log');

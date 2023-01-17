@@ -1,4 +1,4 @@
-## [3.2.1]
+## [4.0.0]
 
 * Accessing Logger through instance
 
