@@ -1,3 +1,7 @@
+## [3.3.1]
+
+* Added ability to enable/disable logs
+
 ## [3.3.0]
 
 * [BREAKING] Changed Logger initialization:
