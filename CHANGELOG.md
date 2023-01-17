@@ -1,3 +1,9 @@
+## [3.3.0]
+
+* [BREAKING] Changed Logger initialization:
+
+    - now you should initialize logger through `Logger.init()` constructor
+
 ## [3.2.0]
 
 * Upgraded dependencies
