@@ -1,6 +1,8 @@
-## [4.0.0]
+## [3.3.0]
 
-* Accessing Logger through instance
+* [BREAKING] Changed Logger initialization:
+
+    - now you should initialize logger through `Logger.init()` constructor
 
 ## [3.2.0]
 
