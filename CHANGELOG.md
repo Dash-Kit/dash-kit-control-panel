@@ -1,3 +1,7 @@
+## [3.2.1]
+
+* Accessing Logger through instance
+
 ## [3.2.0]
 
 * Upgraded dependencies
