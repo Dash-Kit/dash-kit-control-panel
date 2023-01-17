@@ -4,7 +4,7 @@ import 'package:logger/logger.dart' as logger_dependency;
 final consoleOutput = ConsoleOutput();
 
 class Logger {
-  Logger._(this._logger);
+  Logger._(this._logger, {this.enabled = true});
 
   factory Logger.init({
     int methodCount = 2,
@@ -15,6 +15,7 @@ class Logger {
     bool printEmojis = true,
     Map<logger_dependency.Level, bool> excludeBox = const {},
     bool noBoxingByDefault = false,
+    bool enabled = true,
   }) {
     assert(!_initialized, 'Logger has been already initialized!');
 
@@ -34,40 +35,54 @@ class Logger {
           noBoxingByDefault: noBoxingByDefault,
         ),
       ),
+      enabled: enabled,
     );
   }
 
   final logger_dependency.Logger _logger;
+  final bool enabled;
 
   static bool _initialized = false;
 
   /// Log a message at level [Level.verbose].
   void v(dynamic message, [dynamic error, StackTrace? stackTrace]) {
-    _logger.log(logger_dependency.Level.verbose, message, error, stackTrace);
+    if (enabled) {
+      _logger.log(logger_dependency.Level.verbose, message, error, stackTrace);
+    }
   }
 
   /// Log a message at level [Level.debug].
   void d(dynamic message, [dynamic error, StackTrace? stackTrace]) {
-    _logger.log(logger_dependency.Level.debug, message, error, stackTrace);
+    if (enabled) {
+      _logger.log(logger_dependency.Level.debug, message, error, stackTrace);
+    }
   }
 
   /// Log a message at level [Level.info].
   void i(dynamic message, [dynamic error, StackTrace? stackTrace]) {
-    _logger.log(logger_dependency.Level.info, message, error, stackTrace);
+    if (enabled) {
+      _logger.log(logger_dependency.Level.info, message, error, stackTrace);
+    }
   }
 
   /// Log a message at level [Level.warning].
   void w(dynamic message, [dynamic error, StackTrace? stackTrace]) {
-    _logger.log(logger_dependency.Level.warning, message, error, stackTrace);
+    if (enabled) {
+      _logger.log(logger_dependency.Level.warning, message, error, stackTrace);
+    }
   }
 
   /// Log a message at level [Level.error].
   void e(dynamic message, [dynamic error, StackTrace? stackTrace]) {
-    _logger.log(logger_dependency.Level.error, message, error, stackTrace);
+    if (enabled) {
+      _logger.log(logger_dependency.Level.error, message, error, stackTrace);
+    }
   }
 
   /// Log a message at level [Level.wtf].
   void wtf(dynamic message, [dynamic error, StackTrace? stackTrace]) {
-    _logger.log(logger_dependency.Level.wtf, message, error, stackTrace);
+    if (enabled) {
+      _logger.log(logger_dependency.Level.wtf, message, error, stackTrace);
+    }
   }
 }
