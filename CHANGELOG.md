@@ -1,3 +1,7 @@
+## [3.3.2]
+
+* Added dark theme for log console
+
 ## [3.3.1]
 
 * Added ability to enable/disable logs
