@@ -8,21 +8,25 @@ class ProxyManager {
 
   static final shared = ProxyManager._();
 
+  /// Returns `true` if proxy enabled
   Future<bool> isProxyEnabled() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getBool(_isProxyEnabled) ?? false;
   }
 
+  /// Set the `ProxyEnabled` value to [mode] value
   Future<void> setProxyMode(bool mode) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_isProxyEnabled, mode);
   }
 
+  /// Returns the `ProxyIpAddress`
   Future<String> getProxyIpAddress() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_proxyIpAddress) ?? '';
   }
 
+  /// Set the `ProxyIpAddress` to [ipAddress] value
   Future<void> setProxyIpAddress(String ipAddress) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_proxyIpAddress, ipAddress);

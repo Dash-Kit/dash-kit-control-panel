@@ -6,8 +6,10 @@ class DevicePreviewMode {
   static final Stream<bool> onModeChanged = _subject.startWith(_isEnabled);
   static var _isEnabled = false;
 
+  /// Returns the current [DevicePreviewMode] enabled value
   static bool get isEnabled => _isEnabled;
 
+  /// Set the current [DevicePreviewMode] enabled value
   static set isEnabled(bool isEnabled) {
     _subject.add(isEnabled);
     _isEnabled = isEnabled;
