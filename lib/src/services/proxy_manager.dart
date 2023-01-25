@@ -14,10 +14,10 @@ class ProxyManager {
     return prefs.getBool(_isProxyEnabled) ?? false;
   }
 
-  /// Set the `ProxyEnabled` value to [mode] value
-  Future<void> setProxyMode(bool mode) async {
+  /// Set the `ProxyEnabled` value to [isProxyEnabled] value
+  Future<void> setProxyMode(bool isProxyEnabled) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_isProxyEnabled, mode);
+    await prefs.setBool(_isProxyEnabled, isProxyEnabled);
   }
 
   /// Returns the `ProxyIpAddress`

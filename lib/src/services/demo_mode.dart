@@ -15,7 +15,7 @@ class DemoMode {
     }
   }
 
-  /// Returns a `T` [DemoMode] value is [DemoMode] enabled
+  /// Returns a `T` [DemoMode] value if [DemoMode] is enabled
   ///
   /// Otherwise returns `null`
   static T? value<T>(T demoValue) {
