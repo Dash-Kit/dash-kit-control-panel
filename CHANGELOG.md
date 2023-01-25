@@ -1,3 +1,8 @@
+## [3.3.3]
+
+* Covered with documentation
+* Removed auto-generated file from the repository
+
 ## [3.3.2]
 
 * Added dark theme for log console
