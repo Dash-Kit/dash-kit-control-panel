@@ -1,5 +1,6 @@
 ## [3.4.0]
 - Incremented the Flutter SDK version to 3.7.0
+- Incremented the alice_lightweight version to 3.3.0
 
 ## [3.3.3]
 
