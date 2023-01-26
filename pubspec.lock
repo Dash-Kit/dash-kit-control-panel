@@ -5,10 +5,10 @@ packages:
     dependency: "direct main"
     description:
       name: alice_lightweight
-      sha256: "413b4c3be08137d84ce8b5188e18be64c945b33f7f7fc46e75a3bf914b9b17d7"
+      sha256: caac73b9adfb93d6c52d36ced851ad1284ef8b127a6b638f466bee4f2f3f44e9
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   async:
     dependency: transitive
     description:
