@@ -4,14 +4,15 @@ import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
 import 'package:dash_kit_control_panel/src/ui/resources/r.dart';
 import 'package:flutter/material.dart';
 
+// ignore_for_file: avoid-returning-widgets
 class SettingGroup extends StatelessWidget {
   const SettingGroup({
-    Key? key,
     required this.setting,
     required this.child,
     this.backgroundColor,
     this.onTap,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Widget child;
   final Color? backgroundColor;

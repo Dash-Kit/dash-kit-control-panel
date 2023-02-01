@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class DevicePreviewSetting extends StatefulWidget
     implements ControlPanelSetting {
-  const DevicePreviewSetting({Key? key}) : super(key: key);
+  const DevicePreviewSetting({super.key});
 
   @override
   Setting get setting => Setting(
@@ -32,17 +32,15 @@ class _DevicePreviewSettingState extends State<DevicePreviewSetting> {
     return SettingGroup(
       setting: widget.setting,
       onTap: () => onChanged(!isEnabled),
-      child: Container(
+      child: SizedBox(
         height: 36,
         child: Row(
           children: <Widget>[
-            Container(
-              child: Text(
-                'Device Preview mode',
-                style: TextStyle(
-                  color: Colors.white.withAlpha(240),
-                  fontSize: 15,
-                ),
+            Text(
+              'Device Preview mode',
+              style: TextStyle(
+                color: Colors.white.withAlpha(240),
+                fontSize: 15,
               ),
             ),
             const Spacer(),

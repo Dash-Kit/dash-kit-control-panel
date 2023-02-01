@@ -3,6 +3,7 @@ import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// ignore_for_file: avoid-returning-widgets
 class PushNotificationsSettingProps {
   PushNotificationsSettingProps({
     required this.getToken,
@@ -13,19 +14,19 @@ class PushNotificationsSettingProps {
 
 class PushNotificationsSetting extends StatefulWidget
     implements ControlPanelSetting {
-  const PushNotificationsSetting(this.props, {Key? key}) : super(key: key);
+  const PushNotificationsSetting(this.props, {super.key});
 
   final PushNotificationsSettingProps props;
-
-  @override
-  _PushNotificationsSettingState createState() =>
-      _PushNotificationsSettingState();
 
   @override
   Setting get setting => Setting(
         id: runtimeType.toString(),
         title: 'Push Notifications',
       );
+
+  @override
+  _PushNotificationsSettingState createState() =>
+      _PushNotificationsSettingState();
 }
 
 class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
@@ -37,11 +38,14 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
 
   @override
   void initState() {
-    final getToken = widget.props.getToken;
-    getToken.then((pushToken) => setState(() {
+    widget.props.getToken.then(
+      (pushToken) => setState(
+        () {
           tokenController.text = pushToken ?? '';
           token = tokenController.text;
-        }));
+        },
+      ),
+    );
 
     super.initState();
   }
@@ -71,8 +75,8 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
 
   Padding _buildCopyTokenButton() {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0),
-      child: Container(
+      padding: const EdgeInsets.only(left: 8),
+      child: SizedBox(
         width: 70,
         height: 30,
         child: ElevatedButton(
@@ -81,6 +85,7 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
             backgroundColor:
                 hasToken ? Colors.green.withAlpha(245) : Colors.grey.shade700,
           ),
+          onPressed: hasToken ? _copyTokenToClipboard : null,
           child: const Text(
             'Copy',
             style: TextStyle(
@@ -89,7 +94,6 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
               letterSpacing: 0.2,
             ),
           ),
-          onPressed: hasToken ? _copyTokenToClipboard : null,
         ),
       ),
     );
@@ -104,7 +108,7 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
           color: Colors.white70,
           fontSize: 14,
         ),
-        contentPadding: const EdgeInsets.only(bottom: 4, top: 4),
+        contentPadding: const EdgeInsets.symmetric(vertical: 4),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),

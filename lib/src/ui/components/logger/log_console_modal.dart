@@ -35,9 +35,13 @@ class LogConsoleModal extends ModalRoute<void> {
   }
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation, Widget child) {
-    const begin = Offset(0.0, 1.0);
+  Widget buildTransitions(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    const begin = Offset(0, 1);
     const end = Offset.zero;
     final tween = Tween(begin: begin, end: end);
     final offsetAnimation = animation.drive(tween);

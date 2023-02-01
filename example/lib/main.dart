@@ -37,8 +37,5 @@ Future main() async {
 }
 
 void _sendTestRequest() {
-  dio
-      .get('https://www.google.org')
-      .then((response) => print(response))
-      .catchError((error) => print(error));
+  dio.get('https://www.google.org').then(print).catchError(print);
 }

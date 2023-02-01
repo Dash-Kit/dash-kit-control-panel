@@ -3,7 +3,10 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
 
 class Application extends StatelessWidget {
-  const Application({required this.child});
+  const Application({
+    required this.child,
+    super.key,
+  });
 
   final Widget child;
 
@@ -12,8 +15,9 @@ class Application extends StatelessWidget {
     return StreamBuilder<bool>(
       stream: DevicePreviewMode.onModeChanged,
       builder: (context, snapShoot) => DevicePreview(
-          enabled: snapShoot.hasData && snapShoot.data!,
-          builder: (context) => child),
+        enabled: snapShoot.hasData && snapShoot.data!,
+        builder: (context) => child,
+      ),
     );
   }
 

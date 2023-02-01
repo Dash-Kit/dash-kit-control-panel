@@ -16,4 +16,5 @@ dependencies:
   package_info_plus: ^3.0.2
   rxdart: ^0.27.7
   shared_preferences: ^2.0.15
+  clock: ^1.1.1
 

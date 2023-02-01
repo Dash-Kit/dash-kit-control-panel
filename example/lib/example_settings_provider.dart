@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:alice_lightweight/alice.dart';
 import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
 import 'package:dio/adapter.dart';
@@ -44,14 +42,14 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
     );
 
     return [
-      VersionSetting(),
+      const VersionSetting(),
       DemoSetting(demoProps),
       const DevicePreviewSetting(),
       ProxySetting(proxyProps),
       PushNotificationsSetting(pushProps),
       NetworkSetting(networkProps),
       const LicenseSetting(),
-      LogConsoleButton(),
+      const LogConsoleButton(),
     ];
   }
 
@@ -60,15 +58,13 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
       final adapter = dio.httpClientAdapter;
 
       if (adapter is DefaultHttpClientAdapter) {
-        adapter.onHttpClientCreate = (HttpClient client) {
-          client.findProxy = (uri) {
-            return _proxyIp.isNotEmpty == true
-                ? 'PROXY $_proxyIp:8888'
-                : 'DIRECT';
-          };
-
-          client.badCertificateCallback =
-              (cert, host, port) => _proxyIp.isNotEmpty == true;
+        adapter.onHttpClientCreate = (client) {
+          client
+            ..findProxy = (uri) {
+              return _proxyIp.isNotEmpty ? 'PROXY $_proxyIp:8888' : 'DIRECT';
+            }
+            ..badCertificateCallback =
+                (cert, host, port) => _proxyIp.isNotEmpty;
 
           return null;
         };
@@ -77,12 +73,11 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
   }
 
   void _initLogger() {
-    final logger = Logger.init(bufferSize: 25);
-
-    logger.v('Verbose log');
-    logger.d('Debug log');
-    logger.i('Info log');
-    logger.w('Warning log');
-    logger.e('Error log');
+    Logger.init(bufferSize: 25)
+      ..v('Verbose log')
+      ..d('Debug log')
+      ..i('Info log')
+      ..w('Warning log')
+      ..e('Error log');
   }
 }

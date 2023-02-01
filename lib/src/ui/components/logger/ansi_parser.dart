@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AnsiParser {
-  AnsiParser(this.dark);
+  AnsiParser({
+    required this.dark,
+  });
 
   // ignore: constant_identifier_names
-  static const TEXT = 0, BRACKET = 1, CODE = 2;
+  static const TEXT = 0;
+  // ignore: constant_identifier_names
+  static const BRACKET = 1;
+  // ignore: constant_identifier_names
+  static const CODE = 2;
 
   final bool dark;
 
@@ -83,24 +89,27 @@ class AnsiParser {
 
     switch (codes[0]) {
       case 0:
-        foreground = getColor(0, true);
-        background = getColor(0, false);
+        foreground = getColor(colorCode: 0, foreground: true);
+        background = getColor(colorCode: 0, foreground: false);
         break;
       case 38:
-        foreground = getColor(codes[2], true);
+        foreground = getColor(colorCode: codes[2], foreground: true);
         break;
       case 39:
-        foreground = getColor(0, true);
+        foreground = getColor(colorCode: 0, foreground: true);
         break;
       case 48:
-        background = getColor(codes[2], false);
+        background = getColor(colorCode: codes[2], foreground: false);
         break;
       case 49:
-        background = getColor(0, false);
+        background = getColor(colorCode: 0, foreground: false);
     }
   }
 
-  Color getColor(int colorCode, bool foreground) {
+  Color getColor({
+    required int colorCode,
+    required bool foreground,
+  }) {
     switch (colorCode) {
       case 0:
         return foreground ? Colors.black : Colors.transparent;

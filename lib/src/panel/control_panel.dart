@@ -27,7 +27,7 @@ class ControlPanel {
 
     final settings = await _settingsProvider!.buildSettings();
 
-    _navigatorKey?.currentState?.push(
+    await _navigatorKey?.currentState?.push(
       MaterialPageRoute(
         builder: (context) => ControlPanelPage(settings: settings),
       ),

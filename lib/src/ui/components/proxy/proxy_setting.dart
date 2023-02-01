@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 typedef OnProxyIpChanged = void Function(String);
 typedef OnProxyModeChanged = void Function(bool);
 
+// ignore_for_file: avoid-returning-widgets
 class ProxySettingProps {
   ProxySettingProps({
     required this.isEnabled,
@@ -21,11 +22,11 @@ class ProxySettingProps {
   final OnProxyModeChanged onProxyModeChanged;
 
   static Future<dynamic> init(OnProxyIpChanged onProxyChanged) async {
-    _onProxyChanged(onProxyChanged);
+    await _onProxyChanged(onProxyChanged);
   }
 
   static Future<dynamic> standart(OnProxyIpChanged onProxyChanged) async {
-    init(onProxyChanged);
+    await init(onProxyChanged);
 
     return ProxySettingProps(
       initialProxyIpAddress: await ProxyManager.shared.getProxyIpAddress(),
@@ -52,7 +53,7 @@ class ProxySettingProps {
 }
 
 class ProxySetting extends StatefulWidget implements ControlPanelSetting {
-  const ProxySetting(this.props, {Key? key}) : super(key: key);
+  const ProxySetting(this.props, {super.key});
 
   final ProxySettingProps props;
 
@@ -89,6 +90,12 @@ class _ProxySettingState extends State<ProxySetting> {
   }
 
   @override
+  void dispose() {
+    proxyIpFieldFocusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SettingGroup(
       setting: widget.setting,
@@ -109,68 +116,6 @@ class _ProxySettingState extends State<ProxySetting> {
           ),
         ),
       ),
-    );
-  }
-
-  Padding _buildProxyModeButton() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8.0),
-      child: Container(
-        width: 70,
-        height: 30,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 500),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-              backgroundColor: isProxyEnabled
-                  ? Colors.redAccent
-                  : Colors.green.withAlpha(245),
-            ),
-            child: FittedBox(
-              child: Text(
-                isProxyEnabled ? 'Disable' : 'Enable',
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: Colors.white,
-                  letterSpacing: 0.2,
-                ),
-              ),
-            ),
-            onPressed: proxyIP.isEmpty ? null : changeProxyMode,
-          ),
-        ),
-      ),
-    );
-  }
-
-  TextFormField _buildProxyInputField() {
-    return TextFormField(
-      focusNode: proxyIpFieldFocusNode,
-      controller: proxyIpController,
-      decoration: const InputDecoration(
-        labelText: 'Proxy IP address:',
-        labelStyle: TextStyle(
-          color: Colors.white70,
-          fontSize: 14,
-        ),
-        contentPadding: EdgeInsets.only(bottom: 4, top: 4),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
-        ),
-      ),
-      style: TextStyle(
-        color: Colors.white.withAlpha(210),
-        fontSize: 15,
-      ),
-      keyboardType: TextInputType.text,
-      inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9\.]'))],
-      validator: validateIpAdress,
-      onEditingComplete: () => proxyForm.currentState?.validate(),
-      onFieldSubmitted: (value) {
-        submitNewProxyIpAddress(value);
-        FocusScope.of(context).requestFocus(FocusNode());
-      },
     );
   }
 
@@ -209,7 +154,8 @@ class _ProxySettingState extends State<ProxySetting> {
     }
 
     final isNumberComponentsCorrect = components.fold(true, (prev, curr) {
-      final int number = int.parse(curr);
+      final number = int.parse(curr);
+
       return number >= 0 && number < 256;
     });
 
@@ -218,5 +164,67 @@ class _ProxySettingState extends State<ProxySetting> {
     }
 
     return null;
+  }
+
+  Padding _buildProxyModeButton() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8),
+      child: SizedBox(
+        width: 70,
+        height: 30,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+              backgroundColor: isProxyEnabled
+                  ? Colors.redAccent
+                  : Colors.green.withAlpha(245),
+            ),
+            onPressed: proxyIP.isEmpty ? null : changeProxyMode,
+            child: FittedBox(
+              child: Text(
+                isProxyEnabled ? 'Disable' : 'Enable',
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: Colors.white,
+                  letterSpacing: 0.2,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  TextFormField _buildProxyInputField() {
+    return TextFormField(
+      focusNode: proxyIpFieldFocusNode,
+      controller: proxyIpController,
+      decoration: const InputDecoration(
+        labelText: 'Proxy IP address:',
+        labelStyle: TextStyle(
+          color: Colors.white70,
+          fontSize: 14,
+        ),
+        contentPadding: EdgeInsets.symmetric(vertical: 4),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.green),
+        ),
+      ),
+      style: TextStyle(
+        color: Colors.white.withAlpha(210),
+        fontSize: 15,
+      ),
+      keyboardType: TextInputType.text,
+      inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9.]'))],
+      validator: validateIpAdress,
+      onEditingComplete: () => proxyForm.currentState?.validate(),
+      onFieldSubmitted: (value) {
+        submitNewProxyIpAddress(value);
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+    );
   }
 }

@@ -20,13 +20,13 @@ class ExampleApp extends StatelessWidget {
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 36.0),
+                padding: const EdgeInsets.symmetric(horizontal: 36),
                 child: Image.asset('assets/images/png/dash_dart.png'),
               ),
               const SizedBox(height: 16),
@@ -53,9 +53,9 @@ class ExampleApp extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               ElevatedButton(
-                child: const Text('Send Request'),
                 onPressed: sendTestRequest,
-              )
+                child: const Text('Send Request'),
+              ),
             ],
           ),
         ),

@@ -9,7 +9,7 @@ class NetworkSettingProps {
 }
 
 class NetworkSetting extends StatelessWidget implements ControlPanelSetting {
-  const NetworkSetting(this.props, {Key? key}) : super(key: key);
+  const NetworkSetting(this.props, {super.key});
 
   final NetworkSettingProps props;
 
@@ -19,11 +19,12 @@ class NetworkSetting extends StatelessWidget implements ControlPanelSetting {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      margin: const EdgeInsets.all(16),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.green.withAlpha(240),
         ),
+        onPressed: props.alice.showInspector,
         child: FittedBox(
           child: Text(
             'Show network activity',
@@ -34,7 +35,6 @@ class NetworkSetting extends StatelessWidget implements ControlPanelSetting {
             ),
           ),
         ),
-        onPressed: () => props.alice.showInspector(),
       ),
     );
   }
