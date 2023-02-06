@@ -11,5 +11,7 @@ class Setting {
 }
 
 abstract class ControlPanelSetting extends Widget {
+  const ControlPanelSetting({super.key});
+
   Setting get setting;
 }

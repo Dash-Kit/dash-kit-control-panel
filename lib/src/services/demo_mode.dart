@@ -5,7 +5,7 @@ class DemoMode {
   static var _isDemoModeEnabled = false;
   static final _onDemoModeChanged = StreamController<bool>.broadcast();
 
-  /// Returns [DemoMode] enabled value
+  /// Returns [DemoMode] enabled value.
   static bool get isEnabled => _isDemoModeEnabled;
 
   static set isEnabled(bool isEnabled) {
@@ -17,7 +17,7 @@ class DemoMode {
 
   /// Returns a `T` [DemoMode] value if [DemoMode] is enabled
   ///
-  /// Otherwise returns `null`
+  /// Otherwise returns `null`.
   static T? value<T>(T demoValue) {
     if (isEnabled) {
       return demoValue;
@@ -28,7 +28,7 @@ class DemoMode {
 
   /// Call an action if [DemoMode] is enabled
   ///
-  /// Otherwise do nothing
+  /// Otherwise do nothing.
   static void action(void Function() action) {
     if (isEnabled) {
       action();
@@ -38,7 +38,7 @@ class DemoMode {
   /// Returns a [StreamSubscription] for [DemoMode] enabled value
   ///
   /// Fires `onEnabled` if the [DemoMode] is enabled
-  /// Fires `onDisabled` if the [DemoMode] is disabled
+  /// Fires `onDisabled` if the [DemoMode] is disabled.
   static StreamSubscription<bool> subscribe({
     required void Function()? onEnabled,
     required void Function()? onDisabled,

@@ -3,7 +3,10 @@ import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+// ignore_for_file: avoid-returning-widgets
 class VersionSetting extends StatefulWidget implements ControlPanelSetting {
+  const VersionSetting({super.key});
+
   @override
   Setting get setting => Setting(
         id: runtimeType.toString(),
@@ -29,15 +32,13 @@ class _VersionSettingState extends State<VersionSetting> {
     return SettingGroup(
       setting: widget.setting,
       onTap: () => setState(() => showFullDetails = !showFullDetails),
-      child: Container(
-        child: AnimatedCrossFade(
-          duration: const Duration(milliseconds: 400),
-          firstChild: _buildVersionInfo(),
-          secondChild: _buildAppInfoItems(),
-          crossFadeState: !showFullDetails
-              ? CrossFadeState.showFirst
-              : CrossFadeState.showSecond,
-        ),
+      child: AnimatedCrossFade(
+        duration: const Duration(milliseconds: 400),
+        firstChild: _buildVersionInfo(),
+        secondChild: _buildAppInfoItems(),
+        crossFadeState: !showFullDetails
+            ? CrossFadeState.showFirst
+            : CrossFadeState.showSecond,
       ),
     );
   }
@@ -67,7 +68,7 @@ class _VersionSettingState extends State<VersionSetting> {
 
   Container _buildInfoField(String title, String value) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: <Widget>[
           Text(
@@ -115,7 +116,7 @@ class _VersionSettingState extends State<VersionSetting> {
         };
       });
     }).catchError((error) {
-      print('Error on getting package info: ${error?.toString()}');
+      print('Error on getting package info: $error');
     });
   }
 }

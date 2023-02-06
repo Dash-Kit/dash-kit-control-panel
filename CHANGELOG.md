@@ -1,3 +1,7 @@
+## [3.5.0]
+- Added the `dash_kit_lints` dependency
+- Fixed most of lint issues
+
 ## [3.4.0]
 - Incremented the Flutter SDK version to 3.7.0
 - Incremented the alice_lightweight version to 3.3.0

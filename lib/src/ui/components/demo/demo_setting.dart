@@ -12,7 +12,7 @@ class DemoSettingProps {
 }
 
 class DemoSetting extends StatefulWidget implements ControlPanelSetting {
-  const DemoSetting(this.props, {Key? key}) : super(key: key);
+  const DemoSetting(this.props, {super.key});
 
   final DemoSettingProps props;
 
@@ -43,17 +43,15 @@ class _DemoSettingState extends State<DemoSetting> {
     return SettingGroup(
       setting: widget.setting,
       onTap: () => onChanged(!isEnabled),
-      child: Container(
+      child: SizedBox(
         height: 36,
         child: Row(
           children: <Widget>[
-            Container(
-              child: Text(
-                'Demo mode',
-                style: TextStyle(
-                  color: Colors.white.withAlpha(240),
-                  fontSize: 15,
-                ),
+            Text(
+              'Demo mode',
+              style: TextStyle(
+                color: Colors.white.withAlpha(240),
+                fontSize: 15,
               ),
             ),
             const Spacer(),
