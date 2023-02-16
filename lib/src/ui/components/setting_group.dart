@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
-import 'package:dash_kit_control_panel/src/ui/resources/r.dart';
+import 'package:dash_kit_control_panel/src/ui/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: avoid-returning-widgets

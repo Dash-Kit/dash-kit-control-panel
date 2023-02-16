@@ -8,50 +8,6 @@ typedef OnProxyIpChanged = void Function(String);
 typedef OnProxyModeChanged = void Function(bool);
 
 // ignore_for_file: avoid-returning-widgets
-class ProxySettingProps {
-  ProxySettingProps({
-    required this.isEnabled,
-    required this.onProxyModeChanged,
-    required this.onProxyIpChanged,
-    required this.initialProxyIpAddress,
-  });
-
-  final OnProxyIpChanged onProxyIpChanged;
-  final String initialProxyIpAddress;
-  final bool isEnabled;
-  final OnProxyModeChanged onProxyModeChanged;
-
-  static Future<dynamic> init(OnProxyIpChanged onProxyChanged) async {
-    await _onProxyChanged(onProxyChanged);
-  }
-
-  static Future<dynamic> standart(OnProxyIpChanged onProxyChanged) async {
-    await init(onProxyChanged);
-
-    return ProxySettingProps(
-      initialProxyIpAddress: await ProxyManager.shared.getProxyIpAddress(),
-      onProxyIpChanged: (proxyIP) {
-        ProxyManager.shared
-            .setProxyIpAddress(proxyIP)
-            .then((_) => _onProxyChanged(onProxyChanged));
-      },
-      isEnabled: await ProxyManager.shared.isProxyEnabled(),
-      onProxyModeChanged: (isProxyEnabled) {
-        ProxyManager.shared
-            .setProxyMode(isProxyEnabled)
-            .then((_) => _onProxyChanged(onProxyChanged));
-      },
-    );
-  }
-
-  static Future<void> _onProxyChanged(OnProxyIpChanged onProxyChanged) async {
-    final isProxyEnabled = await ProxyManager.shared.isProxyEnabled();
-    final proxyIP = await ProxyManager.shared.getProxyIpAddress();
-
-    onProxyChanged(isProxyEnabled ? proxyIP : '');
-  }
-}
-
 class ProxySetting extends StatefulWidget implements ControlPanelSetting {
   const ProxySetting(this.props, {super.key});
 
@@ -226,5 +182,49 @@ class _ProxySettingState extends State<ProxySetting> {
         FocusScope.of(context).requestFocus(FocusNode());
       },
     );
+  }
+}
+
+class ProxySettingProps {
+  ProxySettingProps({
+    required this.isEnabled,
+    required this.onProxyModeChanged,
+    required this.onProxyIpChanged,
+    required this.initialProxyIpAddress,
+  });
+
+  final OnProxyIpChanged onProxyIpChanged;
+  final String initialProxyIpAddress;
+  final bool isEnabled;
+  final OnProxyModeChanged onProxyModeChanged;
+
+  static Future<dynamic> init(OnProxyIpChanged onProxyChanged) async {
+    await _onProxyChanged(onProxyChanged);
+  }
+
+  static Future<dynamic> standart(OnProxyIpChanged onProxyChanged) async {
+    await init(onProxyChanged);
+
+    return ProxySettingProps(
+      initialProxyIpAddress: await ProxyManager.shared.getProxyIpAddress(),
+      onProxyIpChanged: (proxyIP) {
+        ProxyManager.shared
+            .setProxyIpAddress(proxyIP)
+            .then((_) => _onProxyChanged(onProxyChanged));
+      },
+      isEnabled: await ProxyManager.shared.isProxyEnabled(),
+      onProxyModeChanged: (isProxyEnabled) {
+        ProxyManager.shared
+            .setProxyMode(isProxyEnabled)
+            .then((_) => _onProxyChanged(onProxyChanged));
+      },
+    );
+  }
+
+  static Future<void> _onProxyChanged(OnProxyIpChanged onProxyChanged) async {
+    final isProxyEnabled = await ProxyManager.shared.isProxyEnabled();
+    final proxyIP = await ProxyManager.shared.getProxyIpAddress();
+
+    onProxyChanged(isProxyEnabled ? proxyIP : '');
   }
 }

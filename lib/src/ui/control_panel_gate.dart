@@ -1,4 +1,3 @@
-import 'package:clock/clock.dart';
 import 'package:dash_kit_control_panel/src/panel/control_panel.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +23,8 @@ class ControlPanelGate extends StatelessWidget {
   }
 
   void _onDoubleTap() {
-    final now = clock.now();
+    // ignore: ban-name
+    final now = DateTime.now();
     final diff = _lastDoubleTapEvent != null
         ? now.millisecondsSinceEpoch -
             _lastDoubleTapEvent!.millisecondsSinceEpoch

@@ -1,7 +1,8 @@
 import 'package:alice_lightweight/alice.dart';
 import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
-import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
+import 'package:example/main.dart';
 
 class ExampleSettingsProvider extends ControlPanelSettingsProvider {
   ExampleSettingsProvider({
@@ -9,7 +10,6 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
     required this.dios,
   }) {
     _configureProxy(dios);
-    _initLogger();
 
     ProxySettingProps.init((proxyIpAddress) {
       _proxyIp = proxyIpAddress;
@@ -25,7 +25,7 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
   Future<List<ControlPanelSetting>> buildSettings() async {
     final demoProps = DemoSettingProps(
       onDemoModeChanged: (value) {
-        print('Demo mode is ${value ? 'enabled' : 'disabled'}');
+        logger.i('Demo mode is ${value ? 'enabled' : 'disabled'}');
       },
     );
 
@@ -57,7 +57,7 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
     for (final dio in dios) {
       final adapter = dio.httpClientAdapter;
 
-      if (adapter is DefaultHttpClientAdapter) {
+      if (adapter is IOHttpClientAdapter) {
         adapter.onHttpClientCreate = (client) {
           client
             ..findProxy = (uri) {
@@ -70,14 +70,5 @@ class ExampleSettingsProvider extends ControlPanelSettingsProvider {
         };
       }
     }
-  }
-
-  void _initLogger() {
-    Logger.init(bufferSize: 25)
-      ..v('Verbose log')
-      ..d('Debug log')
-      ..i('Info log')
-      ..w('Warning log')
-      ..e('Error log');
   }
 }

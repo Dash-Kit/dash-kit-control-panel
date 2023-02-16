@@ -6,20 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 // ignore_for_file: avoid-returning-widgets
-class RenderedEvent {
-  RenderedEvent(
-    this.id,
-    this.level,
-    this.span,
-    this.lowerCaseText,
-  );
-
-  final int id;
-  final Level level;
-  final TextSpan span;
-  final String lowerCaseText;
-}
-
 class LogConsole extends StatefulWidget {
   const LogConsole({
     this.dark = false,
@@ -236,6 +222,7 @@ class _LogConsoleState extends State<LogConsole> {
     );
   }
 
+  // ignore: long-method
   Widget _buildBottomBar() {
     return LogBar(
       dark: widget.dark,
@@ -356,4 +343,18 @@ class LogBar extends StatelessWidget {
       ),
     );
   }
+}
+
+class RenderedEvent {
+  RenderedEvent(
+    this.id,
+    this.level,
+    this.span,
+    this.lowerCaseText,
+  );
+
+  final int id;
+  final Level level;
+  final TextSpan span;
+  final String lowerCaseText;
 }

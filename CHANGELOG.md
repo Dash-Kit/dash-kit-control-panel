@@ -1,3 +1,6 @@
+## [3.6.0]
+- Upgrade dependencies
+
 ## [3.5.0]
 - Added the `dash_kit_lints` dependency
 - Fixed most of lint issues

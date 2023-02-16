@@ -10,8 +10,6 @@ class ConsoleOutput extends logger_dependency.LogOutput {
 
   @override
   void output(logger_dependency.OutputEvent event) {
-    event.lines.forEach(print);
-
     if (outputEventBuffer.length == bufferSize) {
       outputEventBuffer.removeFirst();
     }

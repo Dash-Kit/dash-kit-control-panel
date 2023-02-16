@@ -1,6 +1,5 @@
 part of resources;
 
-// ignore_for_file: prefer-match-file-name
 class _ColorRes {
   // MARK: Panel.
   Color get panelBackground => const Color.fromARGB(155, 60, 60, 60);

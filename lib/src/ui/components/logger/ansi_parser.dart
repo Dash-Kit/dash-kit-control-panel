@@ -18,6 +18,7 @@ class AnsiParser {
   Color? background;
   List<TextSpan>? spans;
 
+  // ignore: long-method
   void parse(String s) {
     spans = [];
     var state = TEXT;
