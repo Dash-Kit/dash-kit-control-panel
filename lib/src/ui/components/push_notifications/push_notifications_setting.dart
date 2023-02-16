@@ -4,13 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // ignore_for_file: avoid-returning-widgets
-class PushNotificationsSettingProps {
-  PushNotificationsSettingProps({
-    required this.getToken,
-  });
-
-  final Future<String?> getToken;
-}
 
 class PushNotificationsSetting extends StatefulWidget
     implements ControlPanelSetting {
@@ -132,4 +125,12 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
+}
+
+class PushNotificationsSettingProps {
+  PushNotificationsSettingProps({
+    required this.getToken,
+  });
+
+  final Future<String?> getToken;
 }

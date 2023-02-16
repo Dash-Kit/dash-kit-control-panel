@@ -5,12 +5,6 @@ import 'package:flutter/material.dart';
 
 typedef OnDemoModeChanged = void Function(bool);
 
-class DemoSettingProps {
-  DemoSettingProps({required this.onDemoModeChanged});
-
-  final OnDemoModeChanged onDemoModeChanged;
-}
-
 class DemoSetting extends StatefulWidget implements ControlPanelSetting {
   const DemoSetting(this.props, {super.key});
 
@@ -42,7 +36,7 @@ class _DemoSettingState extends State<DemoSetting> {
   Widget build(BuildContext context) {
     return SettingGroup(
       setting: widget.setting,
-      onTap: () => onChanged(!isEnabled),
+      onTap: () => onChanged(value: !isEnabled),
       child: SizedBox(
         height: 36,
         child: Row(
@@ -57,7 +51,7 @@ class _DemoSettingState extends State<DemoSetting> {
             const Spacer(),
             Switch(
               value: isEnabled,
-              onChanged: onChanged,
+              onChanged: (value) => onChanged(value: value),
               activeTrackColor: Colors.grey,
               activeColor: Colors.green,
             ),
@@ -67,11 +61,17 @@ class _DemoSettingState extends State<DemoSetting> {
     );
   }
 
-  void onChanged(bool value) {
+  void onChanged({required bool value}) {
     setState(() => isEnabled = value);
 
     DemoMode.isEnabled = value;
 
     widget.props.onDemoModeChanged(value);
   }
+}
+
+class DemoSettingProps {
+  DemoSettingProps({required this.onDemoModeChanged});
+
+  final OnDemoModeChanged onDemoModeChanged;
 }

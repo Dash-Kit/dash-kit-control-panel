@@ -8,12 +8,13 @@ import 'package:flutter/material.dart';
 final alice = Alice();
 final navigatorKey = alice.getNavigatorKey();
 final dio = Dio();
+final logger = Logger.init(bufferSize: 25);
 
-Future main() async {
+void main() {
   dio.interceptors.add(alice.getDioInterceptor());
   dio.options = BaseOptions(
-    connectTimeout: 15 * 1000,
-    receiveTimeout: 15 * 1000,
+    connectTimeout: const Duration(seconds: 15),
+    receiveTimeout: const Duration(seconds: 15),
   );
 
   runApp(Application(
@@ -37,5 +38,8 @@ Future main() async {
 }
 
 void _sendTestRequest() {
-  dio.get('https://www.google.org').then(print).catchError(print);
+  dio
+      .get('https://www.google.org')
+      .then(logger.i)
+      .catchError((e, st) => logger.e('Error loading request', e, st));
 }

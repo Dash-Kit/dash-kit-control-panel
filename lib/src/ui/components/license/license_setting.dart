@@ -54,11 +54,11 @@ class _LicenseSettingState extends State<LicenseSetting> {
               )
               ..writeln('--${data.packages.elementAt(0)}--');
           }
-          var indent = '';
+          final buffer = StringBuffer();
           for (var i = -1; i < item.indent; i++) {
-            indent += ' ';
+            buffer.write(' ');
           }
-          output.writeln('$indent${item.text}');
+          output.writeln('$buffer${item.text}');
           currentPackage = data.packages.elementAt(0);
         }
       },
