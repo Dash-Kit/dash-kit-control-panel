@@ -1,3 +1,6 @@
+## [3.6.1]
+- Upgrade dependencies
+
 ## [3.6.0]
 - Upgrade dependencies
 
