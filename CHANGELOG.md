@@ -1,3 +1,7 @@
+## [4.0.0]
+- Upgrade package to dart 3
+- Upgrade the `dash_kit_lints` dependency
+ 
 ## [3.6.1]
 - Upgrade dependencies
 

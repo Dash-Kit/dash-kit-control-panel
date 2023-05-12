@@ -47,7 +47,8 @@ class _LicenseSettingState extends State<LicenseSetting> {
     LicenseRegistry.licenses.listen(
       (data) {
         for (final item in data.paragraphs) {
-          if (data.packages.elementAt(0) != currentPackage) {
+          final firstPackage = data.packages.elementAt(0);
+          if (firstPackage != currentPackage) {
             output
               ..writeln(
                 '-------------------------------------------------------',
@@ -59,7 +60,7 @@ class _LicenseSettingState extends State<LicenseSetting> {
             buffer.write(' ');
           }
           output.writeln('$buffer${item.text}');
-          currentPackage = data.packages.elementAt(0);
+          currentPackage = firstPackage;
         }
       },
       onDone: () => log(

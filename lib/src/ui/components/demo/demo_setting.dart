@@ -3,8 +3,6 @@ import 'package:dash_kit_control_panel/src/services/demo_mode.dart';
 import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
 import 'package:flutter/material.dart';
 
-typedef OnDemoModeChanged = void Function(bool);
-
 class DemoSetting extends StatefulWidget implements ControlPanelSetting {
   const DemoSetting(this.props, {super.key});
 
@@ -73,5 +71,5 @@ class _DemoSettingState extends State<DemoSetting> {
 class DemoSettingProps {
   DemoSettingProps({required this.onDemoModeChanged});
 
-  final OnDemoModeChanged onDemoModeChanged;
+  final ValueChanged<bool> onDemoModeChanged;
 }
