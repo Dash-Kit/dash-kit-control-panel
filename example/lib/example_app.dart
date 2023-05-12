@@ -5,8 +5,8 @@ class ExampleApp extends StatelessWidget {
   const ExampleApp({
     required this.navigatorKey,
     required this.sendTestRequest,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final GlobalKey<NavigatorState> navigatorKey;
   final VoidCallback sendTestRequest;

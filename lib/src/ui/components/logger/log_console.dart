@@ -84,20 +84,19 @@ class _LogConsoleState extends State<LogConsole> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: widget.dark
           ? ThemeData(
               brightness: Brightness.dark,
-              colorScheme: Theme.of(context)
-                  .colorScheme
-                  .copyWith(secondary: Colors.blueGrey),
+              colorScheme: colorScheme.copyWith(secondary: Colors.blueGrey),
             )
           : ThemeData(
               brightness: Brightness.light,
-              colorScheme: Theme.of(context)
-                  .colorScheme
-                  .copyWith(secondary: Colors.lightBlueAccent),
+              colorScheme:
+                  colorScheme.copyWith(secondary: Colors.lightBlueAccent),
             ),
       home: Scaffold(
         body: SafeArea(
@@ -146,9 +145,7 @@ class _LogConsoleState extends State<LogConsole> {
         return true;
       }
     }).toList();
-    setState(() {
-      _filteredBuffer = newFilteredBuffer;
-    });
+    _filteredBuffer = newFilteredBuffer;
 
     if (_followBottom) {
       Future.delayed(Duration.zero, _scrollToBottom);

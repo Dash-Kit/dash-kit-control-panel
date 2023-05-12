@@ -4,9 +4,6 @@ import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-typedef OnProxyIpChanged = void Function(String);
-typedef OnProxyModeChanged = void Function(bool);
-
 // ignore_for_file: avoid-returning-widgets
 class ProxySetting extends StatefulWidget implements ControlPanelSetting {
   const ProxySetting(this.props, {super.key});
@@ -39,8 +36,9 @@ class _ProxySettingState extends State<ProxySetting> {
       submitNewProxyIpAddress(proxyIpController.text);
     });
 
-    proxyIpController.text = widget.props.initialProxyIpAddress;
-    proxyIP = widget.props.initialProxyIpAddress;
+    final initialProxyIpAddress = widget.props.initialProxyIpAddress;
+    proxyIpController.text = initialProxyIpAddress;
+    proxyIP = initialProxyIpAddress;
 
     super.initState();
   }
@@ -193,16 +191,16 @@ class ProxySettingProps {
     required this.initialProxyIpAddress,
   });
 
-  final OnProxyIpChanged onProxyIpChanged;
+  final ValueChanged<String> onProxyIpChanged;
   final String initialProxyIpAddress;
   final bool isEnabled;
-  final OnProxyModeChanged onProxyModeChanged;
+  final ValueChanged<bool> onProxyModeChanged;
 
-  static Future<dynamic> init(OnProxyIpChanged onProxyChanged) async {
+  static Future<dynamic> init(ValueChanged<String> onProxyChanged) async {
     await _onProxyChanged(onProxyChanged);
   }
 
-  static Future<dynamic> standart(OnProxyIpChanged onProxyChanged) async {
+  static Future<dynamic> standart(ValueChanged<String> onProxyChanged) async {
     await init(onProxyChanged);
 
     return ProxySettingProps(
@@ -221,7 +219,9 @@ class ProxySettingProps {
     );
   }
 
-  static Future<void> _onProxyChanged(OnProxyIpChanged onProxyChanged) async {
+  static Future<void> _onProxyChanged(
+    ValueChanged<String> onProxyChanged,
+  ) async {
     final isProxyEnabled = await ProxyManager.shared.isProxyEnabled();
     final proxyIP = await ProxyManager.shared.getProxyIpAddress();
 
