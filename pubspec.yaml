@@ -1,6 +1,6 @@
 name: dash_kit_control_panel
 description: Control panel with debugging features for convenient app development.
-version: 4.0.0
+version: 4.0.1
 homepage: https://github.com/Dash-Kit/dash-kit-control-panel
 
 environment:
