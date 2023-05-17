@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart' as logger_dependency;
 
 class ConsoleOutput extends logger_dependency.LogOutput {
@@ -10,6 +11,9 @@ class ConsoleOutput extends logger_dependency.LogOutput {
 
   @override
   void output(logger_dependency.OutputEvent event) {
+    // ignore: ban-name
+    event.lines.forEach(debugPrint);
+
     if (outputEventBuffer.length == bufferSize) {
       outputEventBuffer.removeFirst();
     }
