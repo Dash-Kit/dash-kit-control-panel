@@ -1,4 +1,4 @@
-part of resources;
+part of 'resources.dart';
 
 class _ColorRes {
   // MARK: Panel.
