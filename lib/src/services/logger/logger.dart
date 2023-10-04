@@ -48,45 +48,75 @@ class Logger {
 
   static bool _initialized = false;
 
-  /// Log a message at level `Level.verbose`.
+  /// Log a message at level `Level.trace`.
   void v(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (enabled) {
-      _logger.log(logger_dependency.Level.verbose, message, error, stackTrace);
+      _logger.log(
+        logger_dependency.Level.trace,
+        message,
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 
   /// Log a message at level `Level.debug`.
   void d(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (enabled) {
-      _logger.log(logger_dependency.Level.debug, message, error, stackTrace);
+      _logger.log(
+        logger_dependency.Level.debug,
+        message,
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 
   /// Log a message at level `Level.info`.
   void i(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (enabled) {
-      _logger.log(logger_dependency.Level.info, message, error, stackTrace);
+      _logger.log(
+        logger_dependency.Level.info,
+        message,
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 
   /// Log a message at level `Level.warning`.
   void w(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (enabled) {
-      _logger.log(logger_dependency.Level.warning, message, error, stackTrace);
+      _logger.log(
+        logger_dependency.Level.warning,
+        message,
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 
   /// Log a message at level `Level.error`.
   void e(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (enabled) {
-      _logger.log(logger_dependency.Level.error, message, error, stackTrace);
+      _logger.log(
+        logger_dependency.Level.error,
+        message,
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 
   /// Log a message at level `Level.wtf`.
   void wtf(dynamic message, [dynamic error, StackTrace? stackTrace]) {
     if (enabled) {
-      _logger.log(logger_dependency.Level.wtf, message, error, stackTrace);
+      _logger.log(
+        logger_dependency.Level.fatal,
+        message,
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 }

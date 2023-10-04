@@ -7,7 +7,7 @@ class ControlPanel {
   // ignore: avoid-global-state
   static bool isInitialized = false;
   static GlobalKey<NavigatorState>? _navigatorKey;
-  static ControlPanelSettingsProvider? _settingsProvider;
+  static late ControlPanelSettingsProvider _settingsProvider;
 
   static void initialize({
     required GlobalKey<NavigatorState> navigatorKey,
@@ -26,7 +26,7 @@ class ControlPanel {
       throw Exception(message);
     }
 
-    final settings = await _settingsProvider!.buildSettings();
+    final settings = await _settingsProvider.buildSettings();
 
     await _navigatorKey?.currentState?.push(
       MaterialPageRoute(

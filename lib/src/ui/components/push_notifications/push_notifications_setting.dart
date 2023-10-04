@@ -14,7 +14,7 @@ class PushNotificationsSetting extends StatefulWidget
   @override
   Setting get setting => Setting(
         id: runtimeType.toString(),
-        title: 'Push Notifications',
+        title: props.title,
       );
 
   @override
@@ -96,7 +96,7 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
     return TextFormField(
       controller: tokenController,
       decoration: InputDecoration(
-        labelText: hasToken ? 'Device token:' : 'No device token',
+        labelText: hasToken ? '${widget.props.label}:' : 'No value',
         labelStyle: const TextStyle(
           color: Colors.white70,
           fontSize: 14,
@@ -119,9 +119,9 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
   void _copyTokenToClipboard() {
     Clipboard.setData(ClipboardData(text: token));
 
-    const snackBar = SnackBar(
-      content: Text('Device token copied to the clipboard'),
-      duration: Duration(seconds: 1),
+    final snackBar = SnackBar(
+      content: Text('${widget.props.label} copied to the clipboard'),
+      duration: const Duration(seconds: 1),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
@@ -130,7 +130,11 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
 class PushNotificationsSettingProps {
   PushNotificationsSettingProps({
     required this.getToken,
+    this.title = 'Push Notifications',
+    this.label = 'Device token',
   });
 
   final Future<String?> getToken;
+  final String title;
+  final String label;
 }
