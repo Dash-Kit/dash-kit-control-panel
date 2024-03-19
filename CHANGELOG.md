@@ -1,3 +1,7 @@
+## [4.2.0]
+- Updated dependencies
+- Added AGP 8.3 support to the example
+
 ## [4.0.1]
 - Fixed logger
 
