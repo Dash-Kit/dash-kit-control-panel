@@ -2,13 +2,12 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   alice_lightweight:
-    dependency: transitive
+    dependency: "direct main"
     description:
-      path: "."
-      ref: "release/3.6.0"
-      resolved-ref: a5c73f12d2ebc996df6fdbe389acfc4357d87558
-      url: "https://github.com/Dash-Kit/alice.git"
-    source: git
+      name: alice_lightweight
+      sha256: cef2188ab0a272aeabd4824d924d354b70d627c9c7365e6ff168578b3b266a81
+      url: "https://pub.dev"
+    source: hosted
     version: "3.6.0"
   async:
     dependency: transitive
@@ -196,10 +195,10 @@ packages:
     dependency: transitive
     description:
       name: logger
-      sha256: b3ff55aeb08d9d8901b767650285872cb1bb8f508373b3e348d60268b0c7f770
+      sha256: "8c94b8c219e7e50194efc8771cd0e9f10807d8d3e219af473d89b06cc2ee4e04"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "2.2.0"
   material_color_utilities:
     dependency: transitive
     description:
@@ -236,10 +235,10 @@ packages:
     dependency: transitive
     description:
       name: package_info_plus
-      sha256: "7e76fad405b3e4016cd39d08f455a4eb5199723cf594cd1b8916d47140d93017"
+      sha256: cb44f49b6e690fa766f023d5b22cac6b9affe741dd792b6ac7ad4fabe0d7b097
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.0"
+    version: "6.0.0"
   package_info_plus_platform_interface:
     dependency: transitive
     description:
