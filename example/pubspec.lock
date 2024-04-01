@@ -4,11 +4,12 @@ packages:
   alice_lightweight:
     dependency: transitive
     description:
-      name: alice_lightweight
-      sha256: de3d923ab3530cbfc70e0e9cda5486cd5ea8fc457a5c45530c9b568e042720e8
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.5.1"
+      path: "."
+      ref: "release/3.6.0"
+      resolved-ref: a5c73f12d2ebc996df6fdbe389acfc4357d87558
+      url: "https://github.com/Dash-Kit/alice.git"
+    source: git
+    version: "3.6.0"
   async:
     dependency: transitive
     description:
@@ -92,10 +93,10 @@ packages:
     dependency: "direct main"
     description:
       name: dio
-      sha256: "49af28382aefc53562459104f64d16b9dfd1e8ef68c862d5af436cc8356ce5a8"
+      sha256: "0978e9a3e45305a80a7210dbeaf79d6ee8bee33f70c8e542dc654c952070217f"
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.1"
+    version: "5.4.2+1"
   ffi:
     dependency: transitive
     description:
@@ -339,18 +340,18 @@ packages:
     dependency: transitive
     description:
       name: share_plus
-      sha256: "3ef39599b00059db0990ca2e30fca0a29d8b37aae924d60063f8e0184cf20900"
+      sha256: "05ec043470319bfbabe0adbc90d3a84cbff0426b9d9f3a6e2ad3e131fa5fa629"
       url: "https://pub.dev"
     source: hosted
-    version: "7.2.2"
+    version: "8.0.2"
   share_plus_platform_interface:
     dependency: transitive
     description:
       name: share_plus_platform_interface
-      sha256: df08bc3a07d01f5ea47b45d03ffcba1fa9cd5370fb44b3f38c70e42cced0f956
+      sha256: "251eb156a8b5fa9ce033747d73535bf53911071f8d3b6f4f0b578505ce0d4496"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.1"
+    version: "3.4.0"
   shared_preferences:
     dependency: transitive
     description:

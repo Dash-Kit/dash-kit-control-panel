@@ -7,7 +7,10 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  alice_lightweight: ^3.5.1
+  alice_lightweight:
+    git:
+      url: https://github.com/Dash-Kit/alice.git
+      ref: release/3.6.0
   dash_kit_lints: ^3.0.3
   device_preview: ^1.1.0
   flutter:
