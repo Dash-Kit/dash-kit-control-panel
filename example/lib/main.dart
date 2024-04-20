@@ -17,11 +17,9 @@ void main() {
     receiveTimeout: const Duration(seconds: 15),
   );
 
-  runApp(Application(
-    child: ExampleApp(
-      navigatorKey: navigatorKey,
-      sendTestRequest: _sendTestRequest,
-    ),
+  runApp(ExampleApp(
+    navigatorKey: navigatorKey,
+    sendTestRequest: _sendTestRequest,
   ));
 
   final settingsProvider = ExampleSettingsProvider(

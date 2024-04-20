@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
-import 'package:dash_kit_control_panel/src/ui/resources/resources.dart';
+import 'package:dash_kit_control_panel/src/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: avoid-returning-widgets
@@ -21,54 +21,53 @@ class SettingGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final widget = Stack(
+      children: <Widget>[
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: AppTheme.of(context).colors.settingGroupBorder,
+            ),
+            borderRadius: BorderRadius.circular(5),
+            color: backgroundColor ??
+                AppTheme.of(context).colors.settingGroupBackground,
+          ),
+          child: child,
+        ),
+        if (setting.title.isNotEmpty)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 22),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 4,
+                vertical: sqrt1_2,
+              ),
+              decoration: BoxDecoration(
+                color: AppTheme.of(context).colors.settingLabelBackground,
+                border: Border.all(
+                  color: AppTheme.of(context).colors.settingGroupBorder,
+                ),
+                borderRadius: BorderRadius.circular(3),
+              ),
+              child: Text(
+                setting.title,
+                style: const TextStyle(fontSize: 11, color: Colors.white54),
+              ),
+            ),
+          ),
+      ],
+    );
+
     if (onTap != null) {
       return GestureDetector(
         onTap: onTap,
-        child: _buildContent(),
+        child: widget,
       );
     }
 
-    return _buildContent();
-  }
-
-  Widget _buildContent() {
-    return Stack(
-      children: <Widget>[
-        _buildSettingContent(),
-        if (setting.title.isNotEmpty) _buildTitle(),
-      ],
-    );
-  }
-
-  Widget _buildTitle() {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 22),
-        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: sqrt1_2),
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 40, 40, 40),
-          border: Border.all(color: R.color.settingGroupBorder),
-          borderRadius: BorderRadius.circular(3),
-        ),
-        child: Text(
-          setting.title,
-          style: const TextStyle(fontSize: 11, color: Colors.white54),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSettingContent() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-      decoration: BoxDecoration(
-        border: Border.all(color: R.color.settingGroupBorder),
-        borderRadius: BorderRadius.circular(5),
-        color: backgroundColor ?? R.color.settingGroupBackground,
-      ),
-      child: child,
-    );
+    return widget;
   }
 }

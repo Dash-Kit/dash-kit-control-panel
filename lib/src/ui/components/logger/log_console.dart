@@ -8,12 +8,10 @@ import 'package:logger/logger.dart';
 // ignore_for_file: avoid-returning-widgets
 class LogConsole extends StatefulWidget {
   const LogConsole({
-    this.dark = false,
     this.showCloseButton = false,
     super.key,
   });
 
-  final bool dark;
   final bool showCloseButton;
 
   @override
@@ -84,30 +82,70 @@ class _LogConsoleState extends State<LogConsole> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: widget.dark
+      theme: isDark
           ? ThemeData(
-              brightness: Brightness.dark,
-              colorScheme: colorScheme.copyWith(secondary: Colors.blueGrey),
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.blueGrey,
+                brightness: Brightness.dark,
+              ),
             )
           : ThemeData(
-              brightness: Brightness.light,
-              colorScheme:
-                  colorScheme.copyWith(secondary: Colors.lightBlueAccent),
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.lightBlueAccent,
+              ),
             ),
       home: Scaffold(
+        appBar: AppBar(
+          shape: Border(
+            bottom: BorderSide(
+              color: Colors.black.withOpacity(0.12),
+            ),
+          ),
+          title: const Text(
+            'Log Console',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  _logFontSize++;
+                });
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.remove),
+              onPressed: () {
+                setState(() {
+                  _logFontSize--;
+                });
+              },
+            ),
+            if (widget.showCloseButton)
+              IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+          ],
+        ),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              _buildTopBar(),
               Expanded(
-                child: _buildLogContent(),
+                child: _buildLogContent(isDark),
               ),
-              _buildBottomBar(),
+              _buildBottomBar(isDark),
             ],
           ),
         ),
@@ -122,7 +160,7 @@ class _LogConsoleState extends State<LogConsole> {
               onPressed: _scrollToBottom,
               child: Icon(
                 Icons.arrow_downward,
-                color: widget.dark ? Colors.white : Colors.lightBlue[900],
+                color: isDark ? Colors.white : Colors.lightBlue[900],
               ),
             ),
           ),
@@ -152,9 +190,9 @@ class _LogConsoleState extends State<LogConsole> {
     }
   }
 
-  Widget _buildLogContent() {
+  Widget _buildLogContent(bool isDark) {
     return Container(
-      color: widget.dark ? Colors.black : Colors.grey[150],
+      color: isDark ? Colors.black : Colors.grey[150],
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: SizedBox(
@@ -178,51 +216,10 @@ class _LogConsoleState extends State<LogConsole> {
     );
   }
 
-  Widget _buildTopBar() {
-    return LogBar(
-      dark: widget.dark,
-      child: Row(
-        children: <Widget>[
-          const Text(
-            'Log Console',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Spacer(),
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {
-              setState(() {
-                _logFontSize++;
-              });
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.remove),
-            onPressed: () {
-              setState(() {
-                _logFontSize--;
-              });
-            },
-          ),
-          if (widget.showCloseButton)
-            IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-        ],
-      ),
-    );
-  }
-
   // ignore: long-method
-  Widget _buildBottomBar() {
+  Widget _buildBottomBar(bool isDark) {
     return LogBar(
-      dark: widget.dark,
+      dark: isDark,
       child: Row(
         children: <Widget>[
           Expanded(
@@ -293,7 +290,8 @@ class _LogConsoleState extends State<LogConsole> {
   }
 
   RenderedEvent _renderEvent(OutputEvent event) {
-    final parser = AnsiParser(dark: widget.dark);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final parser = AnsiParser(dark: isDark);
     final text = event.lines.join('\n');
     parser.parse(text);
 

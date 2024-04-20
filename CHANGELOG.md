@@ -1,3 +1,6 @@
+## [4.3.0]
+- Fix issues with light & dark themes support
+
 ## [4.2.0]
 - Updated dependencies
 - Added AGP 8.3 support to the example

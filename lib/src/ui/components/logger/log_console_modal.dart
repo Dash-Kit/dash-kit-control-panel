@@ -26,12 +26,7 @@ class LogConsoleModal extends ModalRoute<void> {
     Animation<double> animation,
     Animation<double> secondaryAnimation,
   ) {
-    return Scaffold(
-      body: LogConsole(
-        dark: Theme.of(context).brightness == Brightness.dark,
-        showCloseButton: true,
-      ),
-    );
+    return const Scaffold(body: LogConsole(showCloseButton: true));
   }
 
   @override
