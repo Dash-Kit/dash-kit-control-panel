@@ -1,4 +1,5 @@
 import 'package:dash_kit_control_panel/dash_kit_control_panel.dart';
+import 'package:dash_kit_control_panel/src/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class DevicePreviewSetting extends StatefulWidget
@@ -39,7 +40,7 @@ class _DevicePreviewSettingState extends State<DevicePreviewSetting> {
             Text(
               'Device Preview mode',
               style: TextStyle(
-                color: Colors.white.withAlpha(240),
+                color: AppColors.of(context).text,
                 fontSize: 15,
               ),
             ),

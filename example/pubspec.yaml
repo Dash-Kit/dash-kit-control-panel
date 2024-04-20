@@ -12,7 +12,7 @@ dependencies:
   dash_kit_control_panel:
     path: ../
   dio: ^5.4.2+1
-  alice_lightweight: ^3.6.0
+  alice_lightweight: ^3.7.0
   flutter:
     sdk: flutter
 
