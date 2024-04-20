@@ -1,6 +1,7 @@
 import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 import 'package:dash_kit_control_panel/src/services/demo_mode.dart';
 import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
+import 'package:dash_kit_control_panel/src/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class DemoSetting extends StatefulWidget implements ControlPanelSetting {
@@ -42,7 +43,7 @@ class _DemoSettingState extends State<DemoSetting> {
             Text(
               'Demo mode',
               style: TextStyle(
-                color: Colors.white.withAlpha(240),
+                color: AppColors.of(context).text,
                 fontSize: 15,
               ),
             ),

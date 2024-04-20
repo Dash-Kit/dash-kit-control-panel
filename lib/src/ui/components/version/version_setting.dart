@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
+import 'package:dash_kit_control_panel/src/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -76,7 +77,7 @@ class _VersionSettingState extends State<VersionSetting> {
           Text(
             title,
             style: TextStyle(
-              color: Colors.white.withAlpha(240),
+              color: AppColors.of(context).text,
               fontWeight: FontWeight.w400,
               fontSize: 15,
             ),
@@ -85,7 +86,7 @@ class _VersionSettingState extends State<VersionSetting> {
           Text(
             value,
             style: TextStyle(
-              color: Colors.white.withAlpha(200),
+              color: AppColors.of(context).text,
               fontSize: 14,
             ),
           ),

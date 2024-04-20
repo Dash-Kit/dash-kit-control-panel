@@ -1,9 +1,8 @@
 import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 import 'package:dash_kit_control_panel/src/ui/components/control_panel_title.dart';
-import 'package:dash_kit_control_panel/src/ui/resources/resources.dart';
+import 'package:dash_kit_control_panel/src/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-// ignore_for_file: avoid-returning-widgets
 class ControlPanelPage extends StatelessWidget {
   const ControlPanelPage({
     required this.settings,
@@ -17,25 +16,23 @@ class ControlPanelPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const ControlPanelTitle(title: 'Control Panel'),
-        backgroundColor: R.color.appBarBackground,
+        backgroundColor: AppColors.of(context).appBarBackground,
+        leading: BackButton(color: AppColors.of(context).backButton),
+        shape: Border(bottom: BorderSide(color: Colors.black.withOpacity(0.1))),
       ),
-      backgroundColor: R.color.panelBackground,
+      backgroundColor: AppColors.of(context).panelBackground,
       body: SafeArea(
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
           onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
           child: SizedBox.expand(
-            child: _buildSettings(),
+            child: ListView(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              children: settings,
+            ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildSettings() {
-    return ListView(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      children: settings,
     );
   }
 }

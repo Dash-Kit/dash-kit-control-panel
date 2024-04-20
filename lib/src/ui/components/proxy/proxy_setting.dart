@@ -1,6 +1,7 @@
 import 'package:dash_kit_control_panel/src/panel/control_panel_setting.dart';
 import 'package:dash_kit_control_panel/src/services/proxy_manager.dart';
 import 'package:dash_kit_control_panel/src/ui/components/setting_group.dart';
+import 'package:dash_kit_control_panel/src/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -156,19 +157,19 @@ class _ProxySettingState extends State<ProxySetting> {
     return TextFormField(
       focusNode: proxyIpFieldFocusNode,
       controller: proxyIpController,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         labelText: 'Proxy IP address:',
         labelStyle: TextStyle(
-          color: Colors.white70,
+          color: AppColors.of(context).text,
           fontSize: 14,
         ),
-        contentPadding: EdgeInsets.symmetric(vertical: 4),
-        focusedBorder: UnderlineInputBorder(
+        contentPadding: const EdgeInsets.symmetric(vertical: 4),
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
       ),
       style: TextStyle(
-        color: Colors.white.withAlpha(210),
+        color: AppColors.of(context).text,
         fontSize: 15,
       ),
       keyboardType: TextInputType.text,

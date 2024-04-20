@@ -16,6 +16,7 @@ class ExampleApp extends StatelessWidget {
     return MaterialApp(
       title: 'Debug',
       navigatorKey: navigatorKey,
+      themeMode: ThemeMode.system,
       home: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -25,9 +26,11 @@ class ExampleApp extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 36),
-                child: Image.asset('assets/images/png/dash_dart.png'),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 36),
+                  child: Image.asset('assets/images/png/dash_dart.png'),
+                ),
               ),
               const SizedBox(height: 16),
               const ControlPanelGate(
