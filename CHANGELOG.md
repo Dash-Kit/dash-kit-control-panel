@@ -1,3 +1,6 @@
+## [4.4.0]
+- Bump dependencies
+
 ## [4.3.0]
 - Fix issues with light & dark themes support
 
