@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart' as logger_dependency;
 
-class ConsoleOutput extends logger_dependency.LogOutput {
+class CustomOutput extends logger_dependency.LogOutput {
   final ListQueue<logger_dependency.OutputEvent> outputEventBuffer =
       ListQueue();
   Function(logger_dependency.OutputEvent event)? outputCallback;

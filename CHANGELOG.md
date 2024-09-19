@@ -1,3 +1,6 @@
+## [4.5.0]
+- Bump dependencies
+
 ## [4.4.0]
 - Bump dependencies
 

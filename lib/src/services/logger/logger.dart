@@ -1,7 +1,8 @@
-import 'package:dash_kit_control_panel/src/services/logger/console_output.dart';
+import 'package:dash_kit_control_panel/src/services/logger/custom_output.dart';
 import 'package:logger/logger.dart' as logger_dependency;
+import 'package:logger/logger.dart';
 
-final consoleOutput = ConsoleOutput();
+final consoleOutput = CustomOutput();
 
 class Logger {
   Logger._(
@@ -13,7 +14,7 @@ class Logger {
     int methodCount = 2,
     int bufferSize = 20,
     int lineLength = 120,
-    bool printTime = true,
+    DateTimeFormatter dateTimeFormat = DateTimeFormat.onlyTimeAndSinceStart,
     bool colors = false,
     bool printEmojis = true,
     Map<logger_dependency.Level, bool> excludeBox = const {},
@@ -30,7 +31,7 @@ class Logger {
         output: consoleOutput,
         printer: logger_dependency.PrettyPrinter(
           methodCount: methodCount,
-          printTime: printTime,
+          dateTimeFormat: dateTimeFormat,
           colors: colors,
           printEmojis: printEmojis,
           lineLength: lineLength,
