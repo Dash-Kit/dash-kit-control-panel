@@ -20,6 +20,7 @@ class Logger {
     Map<logger_dependency.Level, bool> excludeBox = const {},
     bool noBoxingByDefault = false,
     bool enabled = true,
+    LogFilter? filter,
   }) {
     assert(!_initialized, 'Logger has been already initialized!');
 
@@ -29,6 +30,7 @@ class Logger {
     return Logger._(
       logger_dependency.Logger(
         output: consoleOutput,
+        filter: filter,
         printer: logger_dependency.PrettyPrinter(
           methodCount: methodCount,
           dateTimeFormat: dateTimeFormat,
