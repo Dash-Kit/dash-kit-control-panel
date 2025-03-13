@@ -1,4 +1,7 @@
-## [4.5.0]
+## [4.5.1]
+- Added filter argument for logger initializer
+
+- ## [4.5.0]
 - Bump dependencies
 
 ## [4.4.0]
