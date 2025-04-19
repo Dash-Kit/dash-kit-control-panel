@@ -42,6 +42,7 @@ class DemoMode {
   static StreamSubscription<bool> subscribe({
     required void Function()? onEnabled,
     required void Function()? onDisabled,
+    bool observeInitialValue = true,
   }) {
     final notify = (isEnabled) {
       if (isEnabled) {
@@ -53,7 +54,9 @@ class DemoMode {
       }
     };
 
-    notify(isEnabled);
+    if (observeInitialValue) {
+      notify(isEnabled);
+    }
 
     return _onDemoModeChanged.stream.listen(notify);
   }

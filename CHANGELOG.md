@@ -1,3 +1,6 @@
+## [4.5.2]
+- Added option to skip initial value in demo mode subscriber
+
 ## [4.5.1]
 - Added filter argument for logger initializer
 
