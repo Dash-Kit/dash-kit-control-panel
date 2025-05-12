@@ -1,3 +1,6 @@
+## [4.6.0]
+- Bump dependencies
+
 ## [4.5.2]
 - Added option to skip initial value in demo mode subscriber
 

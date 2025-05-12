@@ -102,7 +102,7 @@ class _LogConsoleState extends State<LogConsole> {
         appBar: AppBar(
           shape: Border(
             bottom: BorderSide(
-              color: Colors.black.withOpacity(0.12),
+              color: Colors.black.withValues(alpha: 0.12),
             ),
           ),
           title: const Text(

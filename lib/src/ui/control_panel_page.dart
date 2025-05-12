@@ -18,7 +18,9 @@ class ControlPanelPage extends StatelessWidget {
         title: const ControlPanelTitle(title: 'Control Panel'),
         backgroundColor: AppColors.of(context).appBarBackground,
         leading: BackButton(color: AppColors.of(context).backButton),
-        shape: Border(bottom: BorderSide(color: Colors.black.withOpacity(0.1))),
+        shape: Border(
+          bottom: BorderSide(color: Colors.black.withValues(alpha: 0.1)),
+        ),
       ),
       backgroundColor: AppColors.of(context).panelBackground,
       body: SafeArea(
