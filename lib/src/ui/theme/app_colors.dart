@@ -18,7 +18,7 @@ class AppColors {
       panelBackground: Colors.white,
       appBarBackground: Colors.white,
       settingGroupBackground: Colors.grey[100]!,
-      settingGroupBorder: Colors.black.withOpacity(0.05),
+      settingGroupBorder: Colors.black.withValues(alpha: 0.05),
       settingLabelBackground: Colors.grey[200]!,
       text: Colors.black.withAlpha(240),
       title: Colors.black54,
