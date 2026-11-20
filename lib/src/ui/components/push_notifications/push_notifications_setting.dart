@@ -13,10 +13,8 @@ class PushNotificationsSetting extends StatefulWidget
   final PushNotificationsSettingProps props;
 
   @override
-  Setting get setting => Setting(
-        id: runtimeType.toString(),
-        title: props.title,
-      );
+  Setting get setting =>
+      Setting(id: runtimeType.toString(), title: props.title);
 
   @override
   _PushNotificationsSettingState createState() =>
@@ -33,12 +31,10 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
   @override
   void initState() {
     widget.props.getToken.then(
-      (pushToken) => setState(
-        () {
-          tokenController.text = pushToken ?? '';
-          token = tokenController.text;
-        },
-      ),
+      (pushToken) => setState(() {
+        tokenController.text = pushToken ?? '';
+        token = tokenController.text;
+      }),
     );
 
     super.initState();
@@ -76,8 +72,9 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-            backgroundColor:
-                hasToken ? Colors.green.withAlpha(245) : Colors.grey.shade700,
+            backgroundColor: hasToken
+                ? Colors.green.withAlpha(245)
+                : Colors.grey.shade700,
           ),
           onPressed: hasToken ? _copyTokenToClipboard : null,
           child: const Text(
@@ -98,19 +95,13 @@ class _PushNotificationsSettingState extends State<PushNotificationsSetting> {
       controller: tokenController,
       decoration: InputDecoration(
         labelText: hasToken ? '${widget.props.label}:' : 'No value',
-        labelStyle: TextStyle(
-          color: AppColors.of(context).text,
-          fontSize: 14,
-        ),
+        labelStyle: TextStyle(color: AppColors.of(context).text, fontSize: 14),
         contentPadding: const EdgeInsets.symmetric(vertical: 4),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
       ),
-      style: TextStyle(
-        color: AppColors.of(context).text,
-        fontSize: 15,
-      ),
+      style: TextStyle(color: AppColors.of(context).text, fontSize: 15),
       keyboardType: TextInputType.text,
       maxLines: null,
       enabled: false,

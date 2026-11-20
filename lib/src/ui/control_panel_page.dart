@@ -4,10 +4,7 @@ import 'package:dash_kit_control_panel/src/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ControlPanelPage extends StatelessWidget {
-  const ControlPanelPage({
-    required this.settings,
-    super.key,
-  });
+  const ControlPanelPage({required this.settings, super.key});
 
   final List<ControlPanelSetting> settings;
 

@@ -11,10 +11,7 @@ class VersionSetting extends StatefulWidget implements ControlPanelSetting {
   const VersionSetting({super.key});
 
   @override
-  Setting get setting => Setting(
-        id: runtimeType.toString(),
-        title: 'App',
-      );
+  Setting get setting => Setting(id: runtimeType.toString(), title: 'App');
 
   @override
   _VersionSettingState createState() => _VersionSettingState();
@@ -85,10 +82,7 @@ class _VersionSettingState extends State<VersionSetting> {
           const Spacer(),
           Text(
             value,
-            style: TextStyle(
-              color: AppColors.of(context).text,
-              fontSize: 14,
-            ),
+            style: TextStyle(color: AppColors.of(context).text, fontSize: 14),
           ),
         ],
       ),
@@ -104,22 +98,24 @@ class _VersionSettingState extends State<VersionSetting> {
   }
 
   void _requestPackageInfo() {
-    PackageInfo.fromPlatform().then((packageInfo) {
-      final version = packageInfo.version;
-      final buildNumber = packageInfo.buildNumber;
-      final appVersion = version.isNotEmpty && buildNumber.isNotEmpty
-          ? '$version ($buildNumber)'
-          : '(not defined)';
+    PackageInfo.fromPlatform()
+        .then((packageInfo) {
+          final version = packageInfo.version;
+          final buildNumber = packageInfo.buildNumber;
+          final appVersion = version.isNotEmpty && buildNumber.isNotEmpty
+              ? '$version ($buildNumber)'
+              : '(not defined)';
 
-      setState(() {
-        fields = {
-          'App Version:': appVersion,
-          'App Name:': packageInfo.appName,
-          'Package Name:': packageInfo.packageName,
-        };
-      });
-    }).catchError((error) {
-      log('Error on getting package info: $error');
-    });
+          setState(() {
+            fields = {
+              'App Version:': appVersion,
+              'App Name:': packageInfo.appName,
+              'Package Name:': packageInfo.packageName,
+            };
+          });
+        })
+        .catchError((error) {
+          log('Error on getting package info: $error');
+        });
   }
 }

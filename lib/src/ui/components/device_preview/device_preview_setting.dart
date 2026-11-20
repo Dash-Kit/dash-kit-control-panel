@@ -7,10 +7,8 @@ class DevicePreviewSetting extends StatefulWidget
   const DevicePreviewSetting({super.key});
 
   @override
-  Setting get setting => Setting(
-        id: runtimeType.toString(),
-        title: 'Device Preview',
-      );
+  Setting get setting =>
+      Setting(id: runtimeType.toString(), title: 'Device Preview');
 
   @override
   _DevicePreviewSettingState createState() => _DevicePreviewSettingState();
@@ -39,17 +37,14 @@ class _DevicePreviewSettingState extends State<DevicePreviewSetting> {
           children: <Widget>[
             Text(
               'Device Preview mode',
-              style: TextStyle(
-                color: AppColors.of(context).text,
-                fontSize: 15,
-              ),
+              style: TextStyle(color: AppColors.of(context).text, fontSize: 15),
             ),
             const Spacer(),
             Switch(
               value: isEnabled,
               onChanged: onChanged,
               activeTrackColor: Colors.grey,
-              activeColor: Colors.green,
+              activeThumbColor: Colors.green,
             ),
           ],
         ),

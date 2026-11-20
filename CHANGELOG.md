@@ -1,3 +1,7 @@
+## [4.7.0]
+- Bump `package_info_plus` to ^10.1.0 and `alice_lightweight` to ^3.12.0 (win32 6), so apps can use `flutter_secure_storage` 11
+- Minimum Flutter is 3.38.1, minimum Dart is 3.10.0
+
 ## [4.6.0]
 - Bump dependencies
 

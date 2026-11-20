@@ -21,7 +21,8 @@ class ControlPanel {
 
   static Future<void> open() async {
     if (!isInitialized) {
-      const message = 'Control Panel is not initialized. '
+      const message =
+          'Control Panel is not initialized. '
           'Call `initialize` method before opening the panel.';
       throw Exception(message);
     }

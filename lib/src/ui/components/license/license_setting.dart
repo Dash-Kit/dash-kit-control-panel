@@ -8,10 +8,7 @@ class LicenseSetting extends StatefulWidget implements ControlPanelSetting {
   const LicenseSetting({super.key});
 
   @override
-  Setting get setting => Setting(
-        id: runtimeType.toString(),
-        title: 'License',
-      );
+  Setting get setting => Setting(id: runtimeType.toString(), title: 'License');
 
   @override
   _LicenseSettingState createState() => _LicenseSettingState();
@@ -44,28 +41,21 @@ class _LicenseSettingState extends State<LicenseSetting> {
   void printLicensesInConsole() {
     var currentPackage = '';
     final output = StringBuffer();
-    LicenseRegistry.licenses.listen(
-      (data) {
-        for (final item in data.paragraphs) {
-          final firstPackage = data.packages.elementAt(0);
-          if (firstPackage != currentPackage) {
-            output
-              ..writeln(
-                '-------------------------------------------------------',
-              )
-              ..writeln('--${data.packages.elementAt(0)}--');
-          }
-          final buffer = StringBuffer();
-          for (var i = -1; i < item.indent; i++) {
-            buffer.write(' ');
-          }
-          output.writeln('$buffer${item.text}');
-          currentPackage = firstPackage;
+    LicenseRegistry.licenses.listen((data) {
+      for (final item in data.paragraphs) {
+        final firstPackage = data.packages.elementAt(0);
+        if (firstPackage != currentPackage) {
+          output
+            ..writeln('-------------------------------------------------------')
+            ..writeln('--${data.packages.elementAt(0)}--');
         }
-      },
-      onDone: () => log(
-        output.toString(),
-      ),
-    );
+        final buffer = StringBuffer();
+        for (var i = -1; i < item.indent; i++) {
+          buffer.write(' ');
+        }
+        output.writeln('$buffer${item.text}');
+        currentPackage = firstPackage;
+      }
+    }, onDone: () => log(output.toString()));
   }
 }

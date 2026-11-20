@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnsiParser {
-  AnsiParser({
-    required this.dark,
-  });
+  AnsiParser({required this.dark});
 
   // ignore: constant_identifier_names
   static const TEXT = 0;
@@ -107,10 +105,7 @@ class AnsiParser {
     }
   }
 
-  Color getColor({
-    required int colorCode,
-    required bool foreground,
-  }) {
+  Color getColor({required int colorCode, required bool foreground}) {
     switch (colorCode) {
       case 0:
         return foreground ? Colors.black : Colors.transparent;
@@ -130,10 +125,7 @@ class AnsiParser {
   TextSpan createSpan(String text) {
     return TextSpan(
       text: text,
-      style: TextStyle(
-        color: foreground,
-        backgroundColor: background,
-      ),
+      style: TextStyle(color: foreground, backgroundColor: background),
     );
   }
 }

@@ -10,10 +10,7 @@ class DemoSetting extends StatefulWidget implements ControlPanelSetting {
   final DemoSettingProps props;
 
   @override
-  Setting get setting => Setting(
-        id: runtimeType.toString(),
-        title: 'Demo',
-      );
+  Setting get setting => Setting(id: runtimeType.toString(), title: 'Demo');
 
   @override
   _DemoSettingState createState() => _DemoSettingState();
@@ -42,17 +39,14 @@ class _DemoSettingState extends State<DemoSetting> {
           children: <Widget>[
             Text(
               'Demo mode',
-              style: TextStyle(
-                color: AppColors.of(context).text,
-                fontSize: 15,
-              ),
+              style: TextStyle(color: AppColors.of(context).text, fontSize: 15),
             ),
             const Spacer(),
             Switch(
               value: isEnabled,
               onChanged: (value) => onChanged(value: value),
               activeTrackColor: Colors.grey,
-              activeColor: Colors.green,
+              activeThumbColor: Colors.green,
             ),
           ],
         ),

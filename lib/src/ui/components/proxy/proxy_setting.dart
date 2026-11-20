@@ -12,10 +12,7 @@ class ProxySetting extends StatefulWidget implements ControlPanelSetting {
   final ProxySettingProps props;
 
   @override
-  Setting get setting => Setting(
-        id: runtimeType.toString(),
-        title: 'Proxy',
-      );
+  Setting get setting => Setting(id: runtimeType.toString(), title: 'Proxy');
 
   @override
   _ProxySettingState createState() => _ProxySettingState();
@@ -159,19 +156,13 @@ class _ProxySettingState extends State<ProxySetting> {
       controller: proxyIpController,
       decoration: InputDecoration(
         labelText: 'Proxy IP address:',
-        labelStyle: TextStyle(
-          color: AppColors.of(context).text,
-          fontSize: 14,
-        ),
+        labelStyle: TextStyle(color: AppColors.of(context).text, fontSize: 14),
         contentPadding: const EdgeInsets.symmetric(vertical: 4),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
       ),
-      style: TextStyle(
-        color: AppColors.of(context).text,
-        fontSize: 15,
-      ),
+      style: TextStyle(color: AppColors.of(context).text, fontSize: 15),
       keyboardType: TextInputType.text,
       inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9.]'))],
       validator: validateIpAdress,
