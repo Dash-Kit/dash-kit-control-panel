@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ControlPanelTitle extends StatelessWidget {
-  const ControlPanelTitle({
-    required this.title,
-    super.key,
-  });
+  const ControlPanelTitle({required this.title, super.key});
 
   final String title;
 

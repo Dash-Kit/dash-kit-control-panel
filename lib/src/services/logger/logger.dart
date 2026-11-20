@@ -5,10 +5,7 @@ import 'package:logger/logger.dart';
 final consoleOutput = CustomOutput();
 
 class Logger {
-  Logger._(
-    this._logger, {
-    this.enabled = true,
-  });
+  Logger._(this._logger, {this.enabled = true});
 
   factory Logger.init({
     int methodCount = 2,

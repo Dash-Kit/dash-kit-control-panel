@@ -26,9 +26,7 @@ class SettingGroup extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
           decoration: BoxDecoration(
-            border: Border.all(
-              color: AppColors.of(context).settingGroupBorder,
-            ),
+            border: Border.all(color: AppColors.of(context).settingGroupBorder),
             borderRadius: BorderRadius.circular(5),
             color:
                 backgroundColor ?? AppColors.of(context).settingGroupBackground,
@@ -64,10 +62,7 @@ class SettingGroup extends StatelessWidget {
     );
 
     if (onTap != null) {
-      return GestureDetector(
-        onTap: onTap,
-        child: widget,
-      );
+      return GestureDetector(onTap: onTap, child: widget);
     }
 
     return widget;

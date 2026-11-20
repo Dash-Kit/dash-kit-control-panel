@@ -7,10 +7,7 @@ import 'package:logger/logger.dart';
 
 // ignore_for_file: avoid-returning-widgets
 class LogConsole extends StatefulWidget {
-  const LogConsole({
-    this.showCloseButton = false,
-    super.key,
-  });
+  const LogConsole({this.showCloseButton = false, super.key});
 
   final bool showCloseButton;
 
@@ -45,21 +42,18 @@ class _LogConsoleState extends State<LogConsole> {
       _refreshFilter();
     };
 
-    _scrollController.addListener(
-      () {
-        if (!_scrollListenerEnabled) {
-          return;
-        }
+    _scrollController.addListener(() {
+      if (!_scrollListenerEnabled) {
+        return;
+      }
 
-        final scrolledToBottom = _scrollController.offset >=
-            _scrollController.position.maxScrollExtent;
-        setState(
-          () {
-            _followBottom = scrolledToBottom;
-          },
-        );
-      },
-    );
+      final scrolledToBottom =
+          _scrollController.offset >=
+          _scrollController.position.maxScrollExtent;
+      setState(() {
+        _followBottom = scrolledToBottom;
+      });
+    });
   }
 
   @override
@@ -101,16 +95,11 @@ class _LogConsoleState extends State<LogConsole> {
       home: Scaffold(
         appBar: AppBar(
           shape: Border(
-            bottom: BorderSide(
-              color: Colors.black.withValues(alpha: 0.12),
-            ),
+            bottom: BorderSide(color: Colors.black.withValues(alpha: 0.12)),
           ),
           title: const Text(
             'Log Console',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           actions: [
             IconButton(
@@ -142,9 +131,7 @@ class _LogConsoleState extends State<LogConsole> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Expanded(
-                child: _buildLogContent(isDark),
-              ),
+              Expanded(child: _buildLogContent(isDark)),
               _buildBottomBar(isDark),
             ],
           ),
@@ -237,30 +224,12 @@ class _LogConsoleState extends State<LogConsole> {
           DropdownButton<Level>(
             value: _filterLevel,
             items: const [
-              DropdownMenuItem(
-                value: Level.trace,
-                child: Text('TRACE'),
-              ),
-              DropdownMenuItem(
-                value: Level.debug,
-                child: Text('DEBUG'),
-              ),
-              DropdownMenuItem(
-                value: Level.info,
-                child: Text('INFO'),
-              ),
-              DropdownMenuItem(
-                value: Level.warning,
-                child: Text('WARNING'),
-              ),
-              DropdownMenuItem(
-                value: Level.error,
-                child: Text('ERROR'),
-              ),
-              DropdownMenuItem(
-                value: Level.fatal,
-                child: Text('FATAL'),
-              ),
+              DropdownMenuItem(value: Level.trace, child: Text('TRACE')),
+              DropdownMenuItem(value: Level.debug, child: Text('DEBUG')),
+              DropdownMenuItem(value: Level.info, child: Text('INFO')),
+              DropdownMenuItem(value: Level.warning, child: Text('WARNING')),
+              DropdownMenuItem(value: Level.error, child: Text('ERROR')),
+              DropdownMenuItem(value: Level.fatal, child: Text('FATAL')),
             ],
             onChanged: (value) {
               _filterLevel = value ?? Level.trace;
@@ -305,11 +274,7 @@ class _LogConsoleState extends State<LogConsole> {
 }
 
 class LogBar extends StatelessWidget {
-  const LogBar({
-    required this.dark,
-    required this.child,
-    super.key,
-  });
+  const LogBar({required this.dark, required this.child, super.key});
 
   final bool dark;
   final Widget child;
@@ -321,11 +286,7 @@ class LogBar extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           boxShadow: [
-            if (!dark)
-              BoxShadow(
-                color: Colors.grey[400]!,
-                blurRadius: 3,
-              ),
+            if (!dark) BoxShadow(color: Colors.grey[400]!, blurRadius: 3),
           ],
         ),
         child: Material(
@@ -341,12 +302,7 @@ class LogBar extends StatelessWidget {
 }
 
 class RenderedEvent {
-  RenderedEvent(
-    this.id,
-    this.level,
-    this.span,
-    this.lowerCaseText,
-  );
+  RenderedEvent(this.id, this.level, this.span, this.lowerCaseText);
 
   final int id;
   final Level level;

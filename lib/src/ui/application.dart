@@ -3,10 +3,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
 
 class Application extends StatelessWidget {
-  const Application({
-    required this.child,
-    super.key,
-  });
+  const Application({required this.child, super.key});
 
   final Widget child;
 
@@ -21,10 +18,7 @@ class Application extends StatelessWidget {
     );
   }
 
-  static Widget appBuilder(
-    BuildContext context,
-    Widget widget,
-  ) {
+  static Widget appBuilder(BuildContext context, Widget widget) {
     return DevicePreview.appBuilder(context, widget);
   }
 }

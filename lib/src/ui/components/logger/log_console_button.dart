@@ -9,9 +9,7 @@ class LogConsoleButton extends StatelessWidget implements ControlPanelSetting {
   Setting get setting => Setting(id: runtimeType.toString());
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(16),
       child: ElevatedButton(

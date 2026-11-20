@@ -7,10 +7,7 @@ abstract class ControlPanelSetting extends Widget {
 }
 
 class Setting {
-  Setting({
-    required this.id,
-    this.title = '',
-  });
+  Setting({required this.id, this.title = ''});
 
   final String id;
   final String title;

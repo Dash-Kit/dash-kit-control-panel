@@ -41,9 +41,6 @@ class LogConsoleModal extends ModalRoute<void> {
     final tween = Tween(begin: begin, end: end);
     final offsetAnimation = animation.drive(tween);
 
-    return SlideTransition(
-      position: offsetAnimation,
-      child: child,
-    );
+    return SlideTransition(position: offsetAnimation, child: child);
   }
 }
